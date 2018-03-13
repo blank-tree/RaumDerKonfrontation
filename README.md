@@ -1,5 +1,5 @@
 # RAUM DER KONFRONTATION
-## BA Interaction Design
+## BA [Interaction Design](http://iad.zhdk.ch/), [Zurich University of the Arts](http://zhdk.ch/)
 ## Fernando Obieta – [blanktree.ch](https://blanktree.ch/) & Claudio Rainolter
 
 Description for the project: [www.raumderkonfrontation.com](http://raumderkonfrontation.com/) and documentation [Logbuch](http://logbuch.raumderkonfrontation.com/).
