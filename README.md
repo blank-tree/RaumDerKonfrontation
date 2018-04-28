@@ -2,10 +2,11 @@
 ## BA [Interaction Design](http://iad.zhdk.ch/), [Zurich University of the Arts](http://zhdk.ch/)
 ## Fernando Obieta – [blanktree.ch](https://blanktree.ch/) & Claudio Rainolter
 
-Description for the project: [www.raumderkonfrontation.com](http://raumderkonfrontation.com/) and documentation [Logbuch](http://logbuch.raumderkonfrontation.com/).
+Description for the project: [www.raumderkonfrontation.com](http://raumderkonfrontation.com/).
 
 #### Software
-- Max by Cycling '74 for the sound installation and dmx control
+- Ableton Live 10
+- Max by Cycling '74 for controlling ableton and the lights
 - node.js for the Terminal
 
-###### Version: 0.01.01 - 180313
+###### Version: 0.03.02 - 180428
