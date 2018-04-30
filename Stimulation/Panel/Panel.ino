@@ -1,11 +1,11 @@
 
-const int PIN_POTIS[] = {A0, A1, A2, A3, A4, A5, A6, A7};
+const int PIN_POTIS[] = {A0, A1, A2, A3, A4, A8, A6, A7};
 const int PIN_STATUS_LED = 13;
 const int PIN_BUTTON_RED = 2;
-const int PIN_BUTTON_BLACK = 4;
-const int PIN_LATCH = 9;
-const int PIN_CLOCK = 13;
-const int PIN_DATA = 11;
+const int PIN_BUTTON_BLACK = 21;
+const int PIN_LATCH = 18;
+const int PIN_CLOCK = 14;
+const int PIN_DATA = 16;
 
 const int REFRESH_INTERVAL_PAUSE = 200;
 
@@ -88,7 +88,15 @@ void loop() {
 		shiftOut(PIN_DATA, PIN_CLOCK, LSBFIRST, number[secondDigit]);
 
 		digitalWrite(PIN_LATCH, HIGH);
-	}
+	} else {
+
+	  digitalWrite(PIN_LATCH, LOW);
+
+    shiftOut(PIN_DATA, PIN_CLOCK, LSBFIRST, B11111111);
+    shiftOut(PIN_DATA, PIN_CLOCK, LSBFIRST, B11111111);
+
+    digitalWrite(PIN_LATCH, HIGH);  
+  }
 
 	if (millis() > buttonRedPress + REFRESH_INTERVAL_PAUSE && buttonRed) {
 		active = !active;
