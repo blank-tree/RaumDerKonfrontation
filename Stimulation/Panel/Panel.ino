@@ -1,64 +1,57 @@
-int poti1 = 0;
-int poti2 = 0;
-int poti3 = 0;
-int poti4 = 0;
-int poti5 = 0;
-int poti6 = 0;
-int poti7 = 0;
-int poti8 = 0;
-boolean buttonBlack = false;
-boolean buttonRed = false;
+
+const int PIN_POTIS[] = {A0, A1, A2, A3, A4, A5, A6, A7};
+const int PIN_STATUS_LED = 13;
+const int PIN_BUTTON_RED = 2;
+const int PIN_BUTTON_BLACK = 4;
+
+int potis[8];
+boolean buttonRed;
+boolean buttonBlack;
+
+unsigned long buttonRedPress;
 
 
 void setup() {
-//set baud rate
-Serial.begin(9600);
+	Serial.begin(9600);
 
-pinMode(13, OUTPUT);
-pinMode(4, INPUT_PULLUP);
-pinMode(2, INPUT_PULLUP);
+	pinMode(PIN_STATUS_LED, OUTPUT);
+	pinMode(PIN_BUTTON_RED, INPUT_PULLUP);
+	pinMode(PIN_BUTTON_BLACK, INPUT_PULLUP);
+
+	for(int i = 0; i < 8; i++){
+	    potis[i] = 0;
+	}
+
+	buttonRed = false;
+	buttonBlack = false;
+
+	buttonRedPress = 0;
+
 }
 
 void loop() {
-//read potis
-poti1 = analogRead(A0);
-poti2 = analogRead(A1);
-poti3 = analogRead(A2);
-poti4 = analogRead(A3);
-poti5 = analogRead(A4);
-poti6 = analogRead(A5);
-poti7 = analogRead(A6);
-poti8 = analogRead(A7);
 
-buttonBlack = digitalRead(4);
-buttonRed = digitalRead(2);
+	for(int i = 0; i < 8; i++) {
+		potis[i] = analogRead(PIN_POTIS[i]);
+	}
 
-if (!buttonRed) {
-    // turn LED on:
-    digitalWrite(13, HIGH);
-  } else {
-    // turn LED off:
-    digitalWrite(13, LOW);
-  }
+	buttonBlack = digitalRead(PIN_BUTTON_BLACK);
+	buttonRed = digitalRead(PIN_BUTTON_RED);
 
-//Send values
-Serial.print(poti1);
-Serial.print(" ");
-Serial.print(poti2);
-Serial.print(" ");
-Serial.print(poti3);
-Serial.print(" ");
-Serial.print(poti4);
-Serial.print(" ");
-Serial.print(poti5);
-Serial.print(" ");
-Serial.print(poti6);
-Serial.print(" ");
-Serial.print(poti7);
-Serial.print(" ");
-Serial.print(poti8);
-Serial.print(" ");
-Serial.println(buttonRed);
-delay(50);
+	if (!buttonRed) {
+	    // turn LED on:
+	    digitalWrite(PIN_STATUS_LED, HIGH);
+	  } else {
+	    // turn LED off:
+	    digitalWrite(PIN_STATUS_LED, LOW);
+	  }
+
+	for(int i = 0; i < 8; i++) {
+    	Serial.print(potis[i]);
+    	Serial.print(" ");
+	}
+	Serial.println(buttonRed);
+
+	delay(50);
 
 }
