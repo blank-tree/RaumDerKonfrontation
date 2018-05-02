@@ -25,7 +25,9 @@ const byte number[] = {
 
 int potis[8];
 
+boolean started;
 boolean active;
+boolean ended;
 String remainingTime;
 
 boolean buttonRed;
@@ -50,8 +52,10 @@ void setup() {
 	    potis[i] = 0;
 	}
 
+	started = false;
 	active = false;
-	remainingTime = "42";
+	ended = false;
+	remainingTime = "99";
 
 	buttonRed = false;
 	buttonBlack = false;
@@ -67,7 +71,9 @@ void loop() {
 	}
 
 	while (Serial.available() > 0) {
-		String incomingMessage = String(Serial.read());
+		int messageTime = Serial.read();
+		ended = Serial.read();
+		String incomingMessage = String(messageTime);
 		active = String(incomingMessage.charAt(0)).toInt();
 		remainingTime = "";
 		remainingTime += incomingMessage.charAt(1);
@@ -77,45 +83,56 @@ void loop() {
 	buttonRed = !digitalRead(PIN_BUTTON_RED);
 	buttonBlack = !digitalRead(PIN_BUTTON_BLACK);
 
-	if (buttonBlack) {
+	if (!ended) {
 
-		int firstDigit = String(remainingTime.charAt(0)).toInt();
-		int secondDigit = String(remainingTime.charAt(1)).toInt();
+		if (buttonBlack) {
 
-		digitalWrite(PIN_LATCH, LOW);
+			int firstDigit = String(remainingTime.charAt(0)).toInt();
+			int secondDigit = String(remainingTime.charAt(1)).toInt();
 
-		shiftOut(PIN_DATA, PIN_CLOCK, LSBFIRST, number[firstDigit]);
-		shiftOut(PIN_DATA, PIN_CLOCK, LSBFIRST, number[secondDigit]);
+			digitalWrite(PIN_LATCH, LOW);
 
-		digitalWrite(PIN_LATCH, HIGH);
-	} else {
+			shiftOut(PIN_DATA, PIN_CLOCK, LSBFIRST, number[firstDigit]);
+			shiftOut(PIN_DATA, PIN_CLOCK, LSBFIRST, number[secondDigit]);
 
-	  digitalWrite(PIN_LATCH, LOW);
+			digitalWrite(PIN_LATCH, HIGH);
 
-    shiftOut(PIN_DATA, PIN_CLOCK, LSBFIRST, B11111111);
-    shiftOut(PIN_DATA, PIN_CLOCK, LSBFIRST, B11111111);
+		} else {
 
-    digitalWrite(PIN_LATCH, HIGH);  
-  }
+			digitalWrite(PIN_LATCH, LOW);
 
-	if (millis() > buttonRedPress + REFRESH_INTERVAL_PAUSE && buttonRed) {
-		active = !active;
-		buttonRedPress = millis();
+	    	shiftOut(PIN_DATA, PIN_CLOCK, LSBFIRST, B11111111);
+			shiftOut(PIN_DATA, PIN_CLOCK, LSBFIRST, B11111111);
+
+			digitalWrite(PIN_LATCH, HIGH);  
+		}
+
+		if (millis() > buttonRedPress + REFRESH_INTERVAL_PAUSE && buttonRed) {
+			if (!started) {
+				started = true;
+			} else {
+				active = !active;
+			}
+			buttonRedPress = millis();
+		}
+
+		buttonRed = digitalRead(PIN_BUTTON_RED);
+
+		if (started && active) {
+			digitalWrite(PIN_STATUS_LED, HIGH);
+		} else {
+			digitalWrite(PIN_STATUS_LED, LOW);
+		}
+
+		for(int i = 0; i < 8; i++) {
+	    	Serial.print(potis[i]);
+	    	Serial.print(" ");
+		}
+		Serial.print(started);
+		Serial.print(" ");
+		Serial.println(active);
+
 	}
-
-	buttonRed = digitalRead(PIN_BUTTON_RED);
-
-	if (active) {
-		digitalWrite(PIN_STATUS_LED, HIGH);
-	} else {
-		digitalWrite(PIN_STATUS_LED, LOW);
-	}
-
-	for(int i = 0; i < 8; i++) {
-    	Serial.print(potis[i]);
-    	Serial.print(" ");
-	}
-	Serial.println(active);
 
 	delay(50);
 
