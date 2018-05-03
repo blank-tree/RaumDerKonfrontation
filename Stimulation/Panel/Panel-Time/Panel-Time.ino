@@ -9,6 +9,8 @@ const int PIN_LATCH = 8;
 const int PIN_CLOCK = 12;
 const int PIN_DATA = 10;
 
+const int REFRESH_CYCLE = 250;
+
 const byte number[] = {
 	B00000011, //0
 	B11110011, //1
@@ -88,5 +90,6 @@ void loop() {
 			digitalWrite(PIN_LATCH, HIGH);  
 		}
 	}
- delay(100);
+	
+	delay(REFRESH_CYCLE);
 }

@@ -34,7 +34,7 @@ void setup() {
 	}
 
 	started = false;
-	active = true;
+	active = false;
 	ended = false;
 
 	buttonRed = false;
@@ -56,6 +56,7 @@ void loop() {
 		if (millis() > buttonRedPress + REFRESH_INTERVAL_SILENCE && buttonRed) {
 			if (!started) {
 				started = true;
+				active = true;
 			} else {
 				active = !active;
 			}
