@@ -7,7 +7,7 @@ const int PIN_LATCH = 18;
 const int PIN_CLOCK = 14;
 const int PIN_DATA = 16;
 
-const int REFRESH_INTERVAL_PAUSE = 200;
+const int REFRESH_INTERVAL_PAUSE = 1000;
 
 const byte number[] = {
 	B00000011, //0
@@ -53,7 +53,7 @@ void setup() {
 	}
 
 	started = false;
-	active = false;
+	active = true;
 	ended = false;
 	remainingTime = "99";
 
@@ -71,8 +71,8 @@ void loop() {
 	}
 
 	while (Serial.available() > 0) {
-		int messageTime = Serial.read();
 		ended = Serial.read();
+		int messageTime = Serial.read();
 		String incomingMessage = String(messageTime);
 		active = String(incomingMessage.charAt(0)).toInt();
 		remainingTime = "";
@@ -85,7 +85,7 @@ void loop() {
 
 	if (!ended) {
 
-		if (buttonBlack) {
+		if (buttonBlack && started) {
 
 			int firstDigit = String(remainingTime.charAt(0)).toInt();
 			int secondDigit = String(remainingTime.charAt(1)).toInt();
@@ -134,6 +134,6 @@ void loop() {
 
 	}
 
-	delay(50);
+	delay(250);
 
 }
