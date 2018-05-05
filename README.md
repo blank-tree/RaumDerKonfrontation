@@ -9,4 +9,4 @@ Description for the project: [www.raumderkonfrontation.com](http://raumderkonfro
 - Max by Cycling '74 for controlling ableton and the lights
 - node.js for the Terminal
 
-###### Version: 0.03.02 - 180428
+###### Version: 0.12.06 - 180505
