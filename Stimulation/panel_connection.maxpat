@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 34.0, 78.0, 1446.0, 1088.0 ],
+		"rect" : [ 34.0, 78.0, 1206.0, 681.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,32 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-127",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 1133.0, 2143.0, 150.0, 20.0 ],
+					"presentation_rect" : [ 1134.75, 2145.333496, 0.0, 0.0 ],
+					"style" : "",
+					"text" : "211 UNO"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-70",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 396.75, 1949.333496, 150.0, 20.0 ],
+					"presentation_rect" : [ 397.833405, 1951.0, 0.0, 0.0 ],
+					"style" : "",
+					"text" : "41 MKR"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-160",
 					"maxclass" : "toggle",
@@ -94,7 +120,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 1448.5, 1156.5, 169.0, 20.0 ],
-					"presentation_rect" : [ 1459.5, 1556.0, 0.0, 0.0 ],
 					"style" : "helpfile_label",
 					"text" : "Start/Stop RdK Everything"
 				}
@@ -119,7 +144,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 1448.5, 1210.0, 141.0, 20.0 ],
-					"presentation_rect" : [ 1464.5, 1598.5, 0.0, 0.0 ],
 					"style" : "helpfile_label",
 					"text" : "Reset RdK Timer"
 				}
@@ -172,7 +196,7 @@
 					"outlettype" : [ "int", "" ],
 					"patching_rect" : [ 1049.0, 2142.0, 79.0, 22.0 ],
 					"style" : "",
-					"text" : "serial e 9600"
+					"text" : "serial d 9600"
 				}
 
 			}
@@ -261,7 +285,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1122.5, 2096.0, 66.0, 22.0 ],
 					"style" : "",
-					"text" : "0 0 60"
+					"text" : "0 0 58"
 				}
 
 			}
@@ -385,11 +409,13 @@
 				"box" : 				{
 					"id" : "obj-120",
 					"maxclass" : "number",
+					"maximum" : 3600,
+					"minimum" : 3600,
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 1456.5, 1767.0, 50.0, 22.0 ],
+					"patching_rect" : [ 1481.5, 1767.0, 50.0, 22.0 ],
 					"style" : ""
 				}
 
@@ -552,7 +578,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 85.833405, 1261.0, 145.0, 22.0 ],
 					"style" : "",
-					"text" : "if $i1 == 1 then 0 else $i2"
+					"text" : "if $i1 == 0 then 0 else $i2"
 				}
 
 			}
@@ -773,7 +799,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 618.0, 1990.333496, 79.0, 22.0 ],
 					"style" : "",
-					"text" : "0 41 0 0 0 11"
+					"text" : "0 10 0 0 0 20"
 				}
 
 			}
@@ -811,7 +837,7 @@
 					"outlettype" : [ "int", "" ],
 					"patching_rect" : [ 309.5, 1949.333496, 79.0, 22.0 ],
 					"style" : "",
-					"text" : "serial c 9600"
+					"text" : "serial b 9600"
 				}
 
 			}
@@ -1683,7 +1709,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 262.0, 462.0, 150.0, 20.0 ],
 					"style" : "",
-					"text" : "check for port c or d!"
+					"text" : "31 mega"
 				}
 
 			}
@@ -1904,28 +1930,28 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-25",
-					"linecount" : 9,
+					"linecount" : 8,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 894.0, 596.0, 44.0, 129.0 ],
+					"patching_rect" : [ 894.0, 596.0, 44.0, 116.0 ],
 					"style" : "",
-					"text" : "524 403 370 652 474 657 544 514 1 1"
+					"text" : "974 1023 949 918 0 1023 1023 1023 1 1"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"id" : "obj-23",
-					"linecount" : 9,
+					"linecount" : 8,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 891.0, 445.0, 47.0, 129.0 ],
+					"patching_rect" : [ 891.0, 445.0, 47.0, 116.0 ],
 					"style" : "",
-					"text" : "\"524 403 370 652 474 657 544 514 1 1\""
+					"text" : "\"974 1023 949 918 0 1023 1023 1023 1 1\""
 				}
 
 			}
@@ -1971,14 +1997,14 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-17",
-					"linecount" : 18,
+					"linecount" : 19,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 653.0, 445.0, 50.0, 250.0 ],
+					"patching_rect" : [ 653.0, 445.0, 50.0, 263.0 ],
 					"style" : "",
-					"text" : "53 50 52 32 52 48 51 32 51 55 48 32 54 53 50 32 52 55 52 32 54 53 55 32 53 52 52 32 53 49 52 32 49 32 49"
+					"text" : "57 55 52 32 49 48 50 51 32 57 52 57 32 57 49 56 32 48 32 49 48 50 51 32 49 48 50 51 32 49 48 50 51 32 49 32 49"
 				}
 
 			}
@@ -2017,7 +2043,7 @@
 					"outlettype" : [ "int", "" ],
 					"patching_rect" : [ 168.0, 462.0, 79.0, 22.0 ],
 					"style" : "",
-					"text" : "serial d 9600"
+					"text" : "serial c 9600"
 				}
 
 			}
@@ -3182,12 +3208,12 @@
 			}
  ],
 		"parameters" : 		{
+			"obj-77" : [ "live.dial[8]", "live.dial", 0 ],
 			"obj-82" : [ "live.dial[7]", "live.dial", 0 ],
 			"obj-97" : [ "live.dial[3]", "live.dial", 0 ],
-			"obj-77" : [ "live.dial[8]", "live.dial", 0 ],
-			"obj-95" : [ "live.dial[5]", "live.dial", 0 ],
 			"obj-98" : [ "live.dial", "live.dial", 0 ],
-			"obj-96" : [ "live.dial[4]", "live.dial", 0 ]
+			"obj-96" : [ "live.dial[4]", "live.dial", 0 ],
+			"obj-95" : [ "live.dial[5]", "live.dial", 0 ]
 		}
 ,
 		"dependency_cache" : [  ],
