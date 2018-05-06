@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 34.0, 78.0, 2492.0, 1328.0 ],
+		"rect" : [ 34.0, 79.0, 1212.0, 867.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -842,7 +842,7 @@
 					"outlettype" : [ "int", "" ],
 					"patching_rect" : [ 1049.0, 1864.0, 79.0, 22.0 ],
 					"style" : "",
-					"text" : "serial d 9600"
+					"text" : "serial b 9600"
 				}
 
 			}
@@ -907,7 +907,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1122.5, 1818.0, 66.0, 22.0 ],
 					"style" : "",
-					"text" : "0 0 60"
+					"text" : "0 0 59"
 				}
 
 			}
@@ -1381,7 +1381,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 594.083374, 1878.833496, 79.0, 22.0 ],
 					"style" : "",
-					"text" : "0 0 0 0 0 16"
+					"text" : "0 10 0 0 0 12"
 				}
 
 			}
@@ -1419,7 +1419,7 @@
 					"outlettype" : [ "int", "" ],
 					"patching_rect" : [ 285.583344, 1837.833496, 79.0, 22.0 ],
 					"style" : "",
-					"text" : "serial b 9600"
+					"text" : "serial d 9600"
 				}
 
 			}
@@ -2519,7 +2519,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 894.0, 318.0, 49.0, 102.0 ],
 					"style" : "",
-					"text" : "484 1023 594 1023 1023 546 46 0 1 1"
+					"text" : "1023 1023 1023 301 0 1023 0 1023 1 0"
 				}
 
 			}
@@ -2533,7 +2533,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 891.0, 167.0, 49.0, 102.0 ],
 					"style" : "",
-					"text" : "\"484 1023 594 1023 1023 546 46 0 1 1\""
+					"text" : "\"1023 1023 1023 301 0 1023 0 1023 1 0\""
 				}
 
 			}
@@ -2586,7 +2586,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 653.0, 167.0, 50.0, 250.0 ],
 					"style" : "",
-					"text" : "52 56 52 32 49 48 50 51 32 53 57 52 32 49 48 50 51 32 49 48 50 51 32 53 52 54 32 52 54 32 48 32 49 32 49"
+					"text" : "49 48 50 51 32 49 48 50 51 32 49 48 50 51 32 51 48 49 32 48 32 49 48 50 51 32 48 32 49 48 50 51 32 49 32 48"
 				}
 
 			}
@@ -4194,12 +4194,12 @@
 			}
  ],
 		"parameters" : 		{
+			"obj-97" : [ "live.dial[3]", "live.dial", 0 ],
+			"obj-95" : [ "live.dial[5]", "live.dial", 0 ],
+			"obj-98" : [ "live.dial", "live.dial", 0 ],
 			"obj-96" : [ "live.dial[4]", "live.dial", 0 ],
 			"obj-77" : [ "live.dial[8]", "live.dial", 0 ],
-			"obj-98" : [ "live.dial", "live.dial", 0 ],
-			"obj-82" : [ "live.dial[7]", "live.dial", 0 ],
-			"obj-97" : [ "live.dial[3]", "live.dial", 0 ],
-			"obj-95" : [ "live.dial[5]", "live.dial", 0 ]
+			"obj-82" : [ "live.dial[7]", "live.dial", 0 ]
 		}
 ,
 		"dependency_cache" : [  ],
