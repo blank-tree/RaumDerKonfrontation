@@ -9,6 +9,8 @@ let app = express();
 let server = http(app);
 let io = socket(server);
 
+app.use(express.static('web'));
+
 server.listen(3000, function(){
   console.log('listening on *:3000');
 });
