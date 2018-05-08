@@ -60,8 +60,13 @@ void loop() {
 		int messageTime = Serial.read();
 		String currentTime = String(messageTime);
 		remainingTime = "";
-		remainingTime += currentTime.charAt(0);
-		remainingTime += currentTime.charAt(1);
+		if (messageTime > 9) {
+			remainingTime += currentTime.charAt(0);
+			remainingTime += currentTime.charAt(1);
+		} else {
+			remainingTime += "0";
+			remainingTime += currentTime.charAt(0);
+		}
 	}
 
 	buttonBlack = !digitalRead(PIN_BUTTON_BLACK);
