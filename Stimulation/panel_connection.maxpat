@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 34.0, 78.0, 2492.0, 1328.0 ],
+		"rect" : [ 34.0, 79.0, 806.0, 867.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -881,7 +881,7 @@
 					"outlettype" : [ "int", "" ],
 					"patching_rect" : [ 1196.0, 1701.0, 79.0, 22.0 ],
 					"style" : "",
-					"text" : "serial b 9600"
+					"text" : "serial c 9600"
 				}
 
 			}
@@ -1420,7 +1420,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 594.083374, 1878.833496, 79.0, 22.0 ],
 					"style" : "",
-					"text" : "0 62 0 0 0 7"
+					"text" : "0 68 0 0 0 20"
 				}
 
 			}
@@ -2542,37 +2542,37 @@
 					"numinlets" : 6,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 32.0, 605.0, 112.0, 22.0 ],
+					"patching_rect" : [ 32.0, 605.0, 119.0, 22.0 ],
 					"style" : "",
-					"text" : "scale 1023 0 0 127"
+					"text" : "scale 1023 0 10 127"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"id" : "obj-25",
-					"linecount" : 8,
+					"linecount" : 6,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 894.0, 318.0, 49.0, 116.0 ],
+					"patching_rect" : [ 894.0, 318.0, 49.0, 89.0 ],
 					"style" : "",
-					"text" : "422 1023 1023 493 468 420 1023 474 0 0"
+					"text" : "1023 1023 0 763 0 665 1023 481 0 0"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"id" : "obj-23",
-					"linecount" : 9,
+					"linecount" : 7,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 891.0, 167.0, 49.0, 129.0 ],
+					"patching_rect" : [ 891.0, 167.0, 49.0, 102.0 ],
 					"style" : "",
-					"text" : "\"422 1023 1023 493 468 420 1023 474 0 0\""
+					"text" : "\"1023 1023 0 763 0 665 1023 481 0 0\""
 				}
 
 			}
@@ -2618,14 +2618,14 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-17",
-					"linecount" : 19,
+					"linecount" : 17,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 653.0, 167.0, 50.0, 263.0 ],
+					"patching_rect" : [ 653.0, 167.0, 50.0, 236.0 ],
 					"style" : "",
-					"text" : "52 50 50 32 49 48 50 51 32 49 48 50 51 32 52 57 51 32 52 54 56 32 52 50 48 32 49 48 50 51 32 52 55 52 32 48 32 48"
+					"text" : "49 48 50 51 32 49 48 50 51 32 48 32 55 54 51 32 48 32 54 54 53 32 49 48 50 51 32 52 56 49 32 48 32 48"
 				}
 
 			}
@@ -2664,7 +2664,7 @@
 					"outlettype" : [ "int", "" ],
 					"patching_rect" : [ 168.0, 184.0, 79.0, 22.0 ],
 					"style" : "",
-					"text" : "serial c 9600"
+					"text" : "serial b 9600"
 				}
 
 			}
@@ -4254,12 +4254,12 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-96" : [ "live.dial[4]", "live.dial", 0 ],
 			"obj-82" : [ "live.dial[7]", "live.dial", 0 ],
-			"obj-98" : [ "live.dial", "live.dial", 0 ],
-			"obj-95" : [ "live.dial[5]", "live.dial", 0 ],
+			"obj-77" : [ "live.dial[8]", "live.dial", 0 ],
 			"obj-97" : [ "live.dial[3]", "live.dial", 0 ],
-			"obj-77" : [ "live.dial[8]", "live.dial", 0 ]
+			"obj-95" : [ "live.dial[5]", "live.dial", 0 ],
+			"obj-98" : [ "live.dial", "live.dial", 0 ],
+			"obj-96" : [ "live.dial[4]", "live.dial", 0 ]
 		}
 ,
 		"dependency_cache" : [  ],
