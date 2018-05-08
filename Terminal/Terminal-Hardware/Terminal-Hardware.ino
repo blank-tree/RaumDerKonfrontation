@@ -10,6 +10,10 @@ MQTTClient client;
 
 unsigned long lastMillis = 0;
 
+int moneyCollected;
+String appointmentDate;
+String appointmentTime;
+
 void connect() {
   Serial.print("checking wifi...");
   while (WiFi.status() != WL_CONNECTED) {
@@ -26,11 +30,27 @@ void connect() {
   Serial.println("\nconnected!");
 
   client.subscribe("/hello");
+  client.subscribe("/acceptMoney");
+  client.subscribe("/appointmentDate");
+  client.subscribe("/appointmentTime");
   // client.unsubscribe("/hello");
 }
 
 void messageReceived(String &topic, String &payload) {
   Serial.println("incoming: " + topic + " - " + payload);
+  switch (topic) {
+      case "acceptMoney":
+        // do something
+        break;
+      case "appointmentDate":
+        // do something
+        break;
+      case "appointmentTime":
+        // do something
+        break;
+      default:
+        // do something
+  }
 }
 
 void setup() {
@@ -43,6 +63,10 @@ void setup() {
   client.onMessage(messageReceived);
 
   connect();
+
+  moneyCollected = 0;
+  appointmentDate = "";
+  appointmentTime = "";
 }
 
 void loop() {
@@ -55,6 +79,12 @@ void loop() {
   // publish a message roughly every second.
   if (millis() - lastMillis > 1000) {
     lastMillis = millis();
-    client.publish("/hello", "world");
+    client.publish("/arduino-online", "1");
   }
+}
+
+void resetTVM() {
+  moneyCollected = 0;
+  appointmentDate = "";
+  appointmentTime = "";
 }

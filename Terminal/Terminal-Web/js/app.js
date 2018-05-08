@@ -14,5 +14,13 @@ $(function(){
 
   $('#button').click(function(){
     client.publish('/hello', 'world');
-  })
+    sendReceipt('09.05.2018', '18:00');
+  });
+
+
+  function sendReceipt(appointmentDate, appointmentTime) {
+  	client.publish('/appointmentDate', appointmentDate);
+  	client.publish('/appointmentTime', appointmentTime);
+  }
+
 })
