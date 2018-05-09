@@ -9,4 +9,4 @@ Description for the project: [www.raumderkonfrontation.com](http://raumderkonfro
 - Max by Cycling '74 for controlling ableton and the lights
 - shiftr.io for the Terminal
 
-###### Version: 0.15.02 - 180508
+###### Version: 0.15.06 - 180509
