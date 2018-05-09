@@ -12,15 +12,22 @@ $(function(){
     console.log('new message:', topic, message.toString());
   });
 
-  $('#button').click(function(){
-    client.publish('/hello', 'world');
-    sendReceipt('09.05.2018', '18:00');
+  $('#appointment-date').click(function() {
+  	client.publish('/appointmentDate', '09.05.2018');
+  });
+
+  $('#appointment-time').click(function() {
+  	client.publish('/appointmentTime', '18:00');
+  });
+
+  $('#language').click(function() {
+  	client.publish('/language', 'de');
+  });
+
+  $('#print').click(function() {
+  	client.publish('/print', '1');
   });
 
 
-  function sendReceipt(appointmentDate, appointmentTime) {
-  	client.publish('/appointmentDate', appointmentDate);
-  	client.publish('/appointmentTime', appointmentTime);
-  }
 
-})
+});
