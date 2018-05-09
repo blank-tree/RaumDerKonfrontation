@@ -1,32 +1,70 @@
 $(document).foundation();
 $(function(){
-  var client = mqtt.connect('mqtt://b23695cf:36a044b175c04e97@broker.shiftr.io', {
-    clientId: 'javascript'
-  });
 
-  client.on('connect', function(){
-    console.log('client has connected!');
-  });
+	// Var
+	var price = 20; // CHF 15.-
+	var currentState = 0;
+	var moneyCollected = 0;
+	var language = '';
+	var appointmentDate = '';
+	var appointmentTime = '';
 
-  client.on('message', function(topic, message) {
-    console.log('new message:', topic, message.toString());
-  });
 
-  $('#appointment-date').click(function() {
-  	client.publish('/appointmentDate', '09.05.2018');
-  });
+	// shitr.io Connection
+	var client = mqtt.connect('mqtt://b23695cf:36a044b175c04e97@broker.shiftr.io', {
+		clientId: 'RdK-iPad'
+	});
 
-  $('#appointment-time').click(function() {
-  	client.publish('/appointmentTime', '18:00');
-  });
+	client.on('connect', function(){
+		console.log('client has connected!');
+		client.subscribe('/moneyCollected');
+	});
 
-  $('#language').click(function() {
-  	client.publish('/language', 'de');
-  });
+	client.on('message', function(topic, message) {
+		console.log('new message:', topic, message.toString());
+		if (currentState == 0 && topic == '/moneyCollected') {
+			moneyCollected = parseInt(message);
+			console.log('money collected: ' + moneyCollected);
+			checkPayment();
+		}
+	});
 
-  $('#print').click(function() {
-  	client.publish('/print', '1');
-  });
+
+	// Functionality
+	
+	$('#appointment-date').click(function() {
+		appointmentDate = '09.05.2018';
+		client.publish('/appointmentDate', appointmentDate);
+	});
+
+	$('#appointment-time').click(function() {
+		appointmentTime = '18:00';
+		client.publish('/appointmentTime', appointmentTime);
+	});
+
+	$('#language').click(function() {
+		language = 'de';
+		client.publish('/language', language);
+	});
+
+	$('#resettvm').click(function() {
+		resetTVM();
+	});
+
+	function checkPayment() {
+		if (moneyCollected >= price) {
+			currentState++;
+			resetTVM();
+		}
+	}
+
+	function resetTVM() {
+		client.publish('/resettvm', '1');
+		currentState = 0;
+		language = '';
+		appointmentDate = '';
+		appointmentTime = '';
+	};
 
 
 
