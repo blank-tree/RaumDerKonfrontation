@@ -1,13 +1,30 @@
 $(document).foundation();
 $(function(){
 
+	// Statemachine:
+	// 0 - Welcome & Language Selection
+	// 1 - Description
+	// 2 - Choose Date
+	// 3 - Choose Time
+	// 4 - Paying
+	// 5 - Checkout
+
 	// Var
+	var timeoutIdle = 600000; // 10min
+	var timeoutRegular = 60000; // 1min
+	var timeoutPaying = 120000; // 2min
+	var timeoutCheckout = 10000; // 10sec
+	var fadeTime = 500; // 0.5sec
 	var price = 20; // CHF 15.-
+
+	var currentTimeout;
 	var currentState = 0;
 	var moneyCollected = 0;
 	var language = '';
 	var appointmentDate = '';
+	var appointmentDateHold = '';
 	var appointmentTime = '';
+	var appointmentTimeHold = '';
 
 
 	// shitr.io Connection
@@ -25,47 +42,95 @@ $(function(){
 		if (currentState == 0 && topic == '/moneyCollected') {
 			moneyCollected = parseInt(message);
 			console.log('money collected: ' + moneyCollected);
+			resetTimeout(timeoutPaying);
 			checkPayment();
 		}
 	});
 
 
+
+
 	// Functionality
 	
-	$('#appointment-date').click(function() {
-		appointmentDate = '09.05.2018';
-		client.publish('/appointmentDate', appointmentDate);
+	// $('#appointment-date').click(function() {
+	// 	appointmentDate = '09.05.2018';
+	// 	client.publish('/appointmentDate', appointmentDate);
+	// });
+
+	// $('#appointment-time').click(function() {
+	// 	appointmentTime = '18:00';
+	// 	client.publish('/appointmentTime', appointmentTime);
+	// });
+
+	// $('#language').click(function() {
+	// 	language = 'de';
+	// 	client.publish('/language', language);
+	// });
+
+	// $('#resettvm').click(function() {
+	// 	resetTVM();
+	// });
+
+	// Choose Language
+	$('#screen-0 .button').click(function() {
+		language = $(this).data('language');
+		$('.content-' + language).show();
+		currentState++;
+		changeToState(currentState);
 	});
 
-	$('#appointment-time').click(function() {
-		appointmentTime = '18:00';
-		client.publish('/appointmentTime', appointmentTime);
+	$('.back-button').click(function() {
+		currentState--;
+		changeToState(currentState);
 	});
 
-	$('#language').click(function() {
-		language = 'de';
-		client.publish('/language', language);
-	});
-
-	$('#resettvm').click(function() {
-		resetTVM();
+	$('.forward-button').click(function() {
+		currentState++;
+		changeToState(currentState);
 	});
 
 	function checkPayment() {
 		if (moneyCollected >= price) {
 			currentState++;
-			resetTVM();
+			resetTimeout(timeoutCheckout);
 		}
-	}
+	};
 
 	function resetTVM() {
 		client.publish('/resettvm', '1');
-		currentState = 0;
-		language = '';
-		appointmentDate = '';
-		appointmentTime = '';
+		$('body').fadeTo(fadeTime, 0, function() {
+			location.reload();
+		});
+	};
+
+	function resetTimeout(timeoutTime = timeoutRegular) {
+		clearTimeout(currentTimeout);
+		if (currentState != 0) {
+			currentTimeout = setTimeout(resetTVM, timeoutTime);
+		} else {
+			currentTimeout = setTimeout(resetTVM, timeoutTime);
+		}
+	};
+
+	function changeToState(nextState, timeoutTime = timeoutRegular) {
+		$('.screen:not(#screen-' + nextState).fadeTo(fadeTime, 0, function() {
+			$('.screen:not(#screen-' + nextState).hide();
+			$('#screen-' + nextState).show().fadeTo(fadeTime, 1);
+		});
+		if (nextState == 0) {
+			resetTVM();
+		} else {
+			resetTimeout(timeoutTime);
+		}
+		console.log('changed to state ' + nextState);
+	};
+
+	function pauseAllButtons() {
+		// TODO: $('.button').
 	};
 
 
+	resetTimeout(timeoutIdle);
+	$('#screen-0').show().fadeTo(fadeTime, 1);
 
 });

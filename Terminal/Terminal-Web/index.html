@@ -10,22 +10,141 @@
   <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
-  <div class="grid-container">
-    <div class="grid-x grid-padding-x">
-      <div class="large-12 cell">
-        <h1>Raum der Konfrontation</h1>
+  <div class="row screen" id="screen-0">
+    <div class="small-12 columns">
+      <h1>Welcome Screen</h1>
+      <div class="small-6 small-centered text-centered">
+        <a href="#" class="button hollow large" data-language="de">Deutsch</a>
+        <a href="#" class="button hollow large" data-language="en">English</a>
       </div>
     </div>
+  </div>
 
-    <a href="#" class="button hollow" id="appointment-date">appointmentDate</a>
-    <a href="#" class="button hollow" id="appointment-time">appointmentTime</a>
-    <a href="#" class="button hollow" id="language">language</a>
-    <a href="#" class="button hollow" id="resettvm">Reset Variables</a>
+  <div class="row screen" id="screen-1">
+    <div class="small-12 columns">
+      <div class="content-de">
+        <h1>Raum der Konfrontation</h1>
+        <p>
+          Wir reflektieren; wir konfrontieren; wir fragen; jeden Tag. Wo und warum? Zu welchem Zweck? Mit welchen Positionen? Und mit wem, abgesehen von uns selbst?
+          <br><br>
+          Der Prozess der Reflexion ermöglicht uns selbst, unser Handeln und unsere Umgebung besser zu verstehen und mitzufühlen. Die Möglichkeit und Zeit diese aktiv zu praktizieren fehlt jedoch oft im Alltag.
+          <br><br>
+          Nun wurde ein Raum geschaffen um dies zu ändern.
+        </p>
+        <div class="small-6 small-centered text-centered">
+          <a href="#" class="button hollow large back-button">Zurück</a>
+          <a href="#" class="button hollow large forward-button">Fortfahren</a>
+        </div>
+      </div>
+      <div class="content-en">
+        <h1>Room of Confrontation</h1>
+        <p>
+          We reflect; we confront; we ask; every day. Where and why? To what purpose? From which perspective? And with whom besides ourselves?
+          <br><br>
+          The process of reflection enables us to better feel and understand ourselves, our actions and our environment. Yet the possibility and time to actively practice this is too often missing in our everyday lives.
+          <br><br>
+          Room has been created to change that.
+        </p>
+        <div class="small-6 small-centered text-centered">
+          <a href="#" class="button hollow large back-button">Back</a>
+          <a href="#" class="button hollow large forward-button">Continue</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <script src="node_modules/jquery/dist/jquery.js"></script>
-    <script src="node_modules/what-input/dist/what-input.js"></script>
-    <script src="node_modules/foundation-sites/dist/js/foundation.js"></script>
-    <script src="node_modules/mqtt/dist/mqtt.min.js"></script>
-    <script src="js/app.js"></script>
-  </body>
-  </html>
+  <div class="row screen" id="screen-2">
+    <div class="small-12 columns">
+      <div class="content-de">
+        <h1>Wähle ein gewünschtes Datum:</h1>
+      </div>
+      <div class="content-en">
+        <h1>Choose a date:</h1>
+      </div>
+      <a href="#" class="button hollow date-button" data-date="08">08.05.2018</a>
+      <a href="#" class="button hollow date-button" data-date="09">09.05.2018</a>
+      <a href="#" class="button hollow date-button" data-date="10">10.05.2018</a>
+      <a href="#" class="button hollow date-button" data-date="11">11.05.2018</a>
+      <a href="#" class="button hollow date-button" data-date="12">12.05.2018</a>
+      <a href="#" class="button hollow date-button" data-date="13">13.05.2018</a>
+      <a href="#" class="button hollow date-button" data-date="14">14.05.2018</a>
+      <a href="#" class="button hollow date-button" data-date="15">15.05.2018</a>
+      <a href="#" class="button hollow date-button" data-date="16">16.05.2018</a>
+      <a href="#" class="button hollow date-button" data-date="17">17.05.2018</a>
+      <a href="#" class="button hollow date-button" data-date="18">18.05.2018</a>
+      <a href="#" class="button hollow date-button" data-date="19">19.05.2018</a>
+      <a href="#" class="button hollow date-button" data-date="20">20.05.2018</a>
+      <a href="#" class="button hollow date-button" data-date="21">21.05.2018</a>
+      <div class="content-de">
+        <div class="small-6 small-centered text-centered">
+          <a href="#" class="button hollow large back-button">Zurück</a>
+          <a href="#" class="button hollow large forward-button">Fortfahren</a>
+        </div>
+      </div>
+      <div class="content-en">
+        <div class="small-6 small-centered text-centered">
+          <a href="#" class="button hollow large back-button">Back</a>
+          <a href="#" class="button hollow large forward-button">Continue</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row screen" id="screen-3">
+    <div class="small-12 columns">
+      <div class="content-de">
+        <h1>Wahle die Startuhrzeit für deine Stunde:</h1>
+      </div>
+      <div class="content-en">
+        <h1>Choose the start time for your hour:</h1>
+      </div>
+
+      <a href="#" class="button hollow date-button" data-time="07">07:00</a>
+      <a href="#" class="button hollow date-button" data-time="08">08:00</a>
+      <a href="#" class="button hollow date-button" data-time="09">09:00</a>
+      <a href="#" class="button hollow date-button" data-time="10">10:00</a>
+      <a href="#" class="button hollow date-button" data-time="11">11:00</a>
+      <a href="#" class="button hollow date-button" data-time="12">12:00</a>
+      <a href="#" class="button hollow date-button" data-time="13">13:00</a>
+      <a href="#" class="button hollow date-button" data-time="14">14:00</a>
+      <a href="#" class="button hollow date-button" data-time="15">15:00</a>
+      <a href="#" class="button hollow date-button" data-time="16">16:00</a>
+      <a href="#" class="button hollow date-button" data-time="17">17:00</a>
+      <a href="#" class="button hollow date-button" data-time="18">18:00</a>
+      <a href="#" class="button hollow date-button" data-time="19">19:00</a>
+      <a href="#" class="button hollow date-button" data-time="20">20:00</a>
+      <a href="#" class="button hollow date-button" data-time="21">21:00</a>
+      <a href="#" class="button hollow date-button" data-time="22">22:00</a>
+
+      <div class="content-de">
+        <div class="small-6 small-centered text-centered">
+          <a href="#" class="button hollow large back-button">Zurück</a>
+          <a href="#" class="button hollow large forward-button">Fortfahren</a>
+        </div>
+      </div>
+      <div class="content-en">
+        <div class="small-6 small-centered text-centered">
+          <a href="#" class="button hollow large back-button">Back</a>
+          <a href="#" class="button hollow large forward-button">Continue</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  
+<!-- 
+  <a href="#" class="button hollow" id="appointment-date">appointmentDate</a>
+  <a href="#" class="button hollow" id="appointment-time">appointmentTime</a>
+  <a href="#" class="button hollow" id="language">language</a>
+  <a href="#" class="button hollow" id="resettvm">Reset Variables</a>
+-->
+
+
+  <script src="node_modules/jquery/dist/jquery.js"></script>
+  <script src="node_modules/what-input/dist/what-input.js"></script>
+  <script src="node_modules/foundation-sites/dist/js/foundation.js"></script>
+  <script src="node_modules/mqtt/dist/mqtt.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
