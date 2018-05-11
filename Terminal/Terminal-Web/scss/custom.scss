@@ -4,9 +4,18 @@
 	position: fixed;
 	left: 0;
 	top: 0;
-	transition: opacity 1s ease-in-out;
+	transition: opacity 400ms ease;
+	webkit-transition: opacity 400ms ease;
+}
+
+#screen-0 {
+	display: block;
 }
 
 .content-de, .content-en {
+	display: none;
+}
+
+.timetables {
 	display: none;
 }
