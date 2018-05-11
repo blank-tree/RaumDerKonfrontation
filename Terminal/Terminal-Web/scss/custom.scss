@@ -1,6 +1,10 @@
 .screen {
 	opacity: 0;
 	display: none;
+	position: fixed;
+	left: 0;
+	top: 0;
+	transition: opacity 1s ease-in-out;
 }
 
 .content-de, .content-en {

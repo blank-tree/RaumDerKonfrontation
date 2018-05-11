@@ -1,9 +1,17 @@
+/**
+ * Terminal-Hardware.ino
+ * Transfers the amount of money payed to the iPad 
+ * and receives the command to print the receipt
+ * Board: MKR1000
+ */
+
 #include <SPI.h>
 #include <WiFi101.h>
 #include <MQTT.h>
 
 // Settings
-
+const boolean PRINTING = false;
+const boolean COINS = false;
 
 // Shitr.io Connection
 const char ssid[] = "BRIDGE";
@@ -36,6 +44,7 @@ void connect() {
   client.subscribe("/language");
   client.subscribe("/appointmentDate");
   client.subscribe("/appointmentTime");
+  client.subscribe("/print");
   client.subscribe("/resettvm");
   // client.unsubscribe("/hello");
 }
@@ -45,10 +54,16 @@ void messageReceived(String &topic, String &payload) {
 
   if (topic == "/language") {
     Serial.println("Language is " + payload);
+    language = payload;
   } else if (topic == "/appointmentDate") {
     Serial.println("The date of the appointment is " + payload);
+    appointmentDate = payload;
   } else if (topic == "/appointmentTime") {
     Serial.println("The time of the appointment is " + payload);
+    appointmentTime = payload;
+  } else if (topic == "/print") {
+    Serial.println("Printing the receipt");
+    printReceipt();
   } else if (topic == "/resettvm") {
     Serial.println("Reset the whole thing ");
     resetTVM();
@@ -85,6 +100,22 @@ void loop() {
     lastMillis = millis();
     moneyCollected++;
     client.publish("/moneyCollected", String(moneyCollected));
+  }
+}
+
+void collectMoney() {
+  if (COINS) {
+    
+  } else {
+    
+  }
+}
+
+void printReceipt() {
+  if (PRINTING) {
+    // Thermal printer code
+  } else {
+    // Testing code
   }
 }
 

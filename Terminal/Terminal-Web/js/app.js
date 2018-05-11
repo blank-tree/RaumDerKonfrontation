@@ -15,16 +15,14 @@ $(function(){
 	var timeoutPaying = 120000; // 2min
 	var timeoutCheckout = 10000; // 10sec
 	var fadeTime = 500; // 0.5sec
-	var price = 20; // CHF 15.-
+	var price = 30; // CHF 15.-
 
 	var currentTimeout;
 	var currentState = 0;
 	var moneyCollected = 0;
 	var language = '';
 	var appointmentDate = '';
-	var appointmentDateHold = '';
 	var appointmentTime = '';
-	var appointmentTimeHold = '';
 
 
 	// shitr.io Connection
@@ -39,7 +37,7 @@ $(function(){
 
 	client.on('message', function(topic, message) {
 		console.log('new message:', topic, message.toString());
-		if (currentState == 0 && topic == '/moneyCollected') {
+		if (currentState == 4 && topic == '/moneyCollected') {
 			moneyCollected = parseInt(message);
 			console.log('money collected: ' + moneyCollected);
 			resetTimeout(timeoutPaying);
@@ -75,24 +73,44 @@ $(function(){
 	$('#screen-0 .button').click(function() {
 		language = $(this).data('language');
 		$('.content-' + language).show();
-		currentState++;
-		changeToState(currentState);
+		client.publish('/language', language);
+		currentState++;		
+		changeToState();
+	});
+
+	// Choose Date
+	$('#screen-2 .date-button').click(function() {
+		$('#screen-2 .date-button').removeClass('primary').addClass('hollow');
+		$(this).removeClass('hollow').addClass('primary');
+		appointmentDate = $(this).data('date');
+		client.publish('/appointmentDate', appointmentDate);
+		$('#screen-2 .forward-button').removeClass('disabled');
+	});
+
+	// Choose Time
+	$('#screen-3 .time-button').click(function() {
+		$('#screen-3 .time-button').removeClass('primary').addClass('hollow');
+		$(this).removeClass('hollow').addClass('primary');
+		appointmentTime = $(this).data('time');
+		client.publish('/appointmentTime', appointmentTime);
+		$('#screen-3 .forward-button').removeClass('disabled');
 	});
 
 	$('.back-button').click(function() {
 		currentState--;
-		changeToState(currentState);
+		changeToState();
 	});
 
 	$('.forward-button').click(function() {
 		currentState++;
-		changeToState(currentState);
+		changeToState();
 	});
 
 	function checkPayment() {
 		if (moneyCollected >= price) {
 			currentState++;
-			resetTimeout(timeoutCheckout);
+			client.publish('/print', '1');
+			changeToState(timeoutCheckout);
 		}
 	};
 
@@ -112,18 +130,38 @@ $(function(){
 		}
 	};
 
-	function changeToState(nextState, timeoutTime = timeoutRegular) {
-		$('.screen:not(#screen-' + nextState).fadeTo(fadeTime, 0, function() {
-			$('.screen:not(#screen-' + nextState).hide();
-			$('#screen-' + nextState).show().fadeTo(fadeTime, 1);
-		});
-		if (nextState == 0) {
+	function changeToState(timeoutTime = timeoutRegular) {
+		for (var i = 0; i < 6; i++) {
+			if ($('#screen-' + i).css('display') != 'none') {
+				$('#screen-' + i).fadeOut(fadeTime);
+				setTimeout(fadeToNewScreen, fadeTime);
+			}
+		}
+
+
+		// $('.screen:not(#screen-' + nextState).fadeTo(fadeTime, 0, function() {
+		// 	if ($(this).css('display') != 'none') {
+		// 		$(this).hide();
+		// 		console.log('doing stuff');
+		// 	}
+		// 	if (!foo) {
+		// 		$('#screen-' + nextState).show(function() {
+		// 			$(this).fadeTo(fadeTime, 1);
+		// 		});
+		// 		foo = true;
+		// 	}
+		// });
+		if (currentState == 0) {
 			resetTVM();
 		} else {
 			resetTimeout(timeoutTime);
 		}
-		console.log('changed to state ' + nextState);
+		console.log('changed to state ' + currentState);
 	};
+
+	function fadeToNewScreen() {
+		$('#screen-' + currentState).show().fadeTo(fadeTime, 1);
+	}
 
 	function pauseAllButtons() {
 		// TODO: $('.button').

@@ -1,3 +1,9 @@
+/**
+ * Light.ino
+ * Receives the light settings from Max MSP via Serial
+ * Board: MKR1000
+ */
+
 #include <Adafruit_NeoPixel.h>
 #ifdef __AVR__
 #include <avr/power.h>
@@ -7,6 +13,7 @@
 #define NUMPIXELS 300
 
 int ledValues[6] = {0,0,0,0,0,0};
+// 0 gap green red blue white
 
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_RGBW + NEO_KHZ800);
 
