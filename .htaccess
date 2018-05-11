@@ -7,4 +7,4 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d 
 RewriteRule ^(.*)$ /Terminal/Terminal-Web/$1 
 RewriteCond %{HTTP_HOST} ^(www.)?terminal.raumderkonfrontation.com$ 
-RewriteRule ^(/)?$ Terminal/Terminal-Web/index.html [L]
+RewriteRule ^(/)?$ Terminal/Terminal-Web/index.php [L]
