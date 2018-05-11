@@ -151,6 +151,10 @@ $conn->close();
         </div>
     </div>
 
+    <div class="button hollow large" id="pay">
+        PAY!
+    </div>
+
     <div class="content-de">
         <div class="small-6 small-centered text-centered">
             <a href="#" class="button hollow large back-button">Zurück</a>

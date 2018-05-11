@@ -5,7 +5,7 @@
 	left: 0;
 	top: 0;
 	transition: opacity 400ms ease;
-	webkit-transition: opacity 400ms ease;
+	webkit-transition: opacity 400ms ease-in-out;
 }
 
 #screen-0 {

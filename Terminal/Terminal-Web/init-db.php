@@ -11,6 +11,8 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
+mysqli_query($conn, "TRUNCATE TABLE " . DB_TABLE);
+
 $stmt = $conn->prepare("INSERT INTO " . DB_TABLE . " (date, time, taken) VALUES (?, ?, ?)");
 $stmt->bind_param("ssi", $date, $time, $taken);
 

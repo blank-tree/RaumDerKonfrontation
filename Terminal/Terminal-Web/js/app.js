@@ -39,7 +39,7 @@ $(function () {
     client.on('message', function (topic, message) {
         console.log('new message:', topic, message.toString());
         if (currentState == 4 && topic == '/moneyCollected') {
-            moneyCollected = parseInt(message);
+            moneyCollected = parseInt(message.toString());
             console.log('money collected: ' + moneyCollected);
             resetTimeout(timeoutPaying);
             checkPayment();
@@ -73,7 +73,7 @@ $(function () {
         language = $(this).data('language');
         $('.content-' + language).show();
         client.publish('/language', language);
-        changeState(true);
+        changeState(true, timeoutRegular);
     });
 
     // Choose Date
@@ -83,7 +83,7 @@ $(function () {
         $('#screen-3 .time-button').removeClass('primary').addClass('hollow');
         $('#screen-3 .forward-button').addClass('disabled');
         appointmentDate = $(this).data('date');
-        client.publish('/appointmentDate', appointmentDate);
+        client.publish('/appointmentDate', appointmentDate.toString());
         $('#screen-2 .forward-button').removeClass('disabled');
         $('#screen-3 .timetables').hide();
         $('#screen-3 #date-' + appointmentDate).show();
@@ -95,41 +95,46 @@ $(function () {
             $('#screen-3 .time-button').removeClass('primary').addClass('hollow');
             $(this).removeClass('hollow').addClass('primary');
             appointmentTime = $(this).data('time');
-            client.publish('/appointmentTime', appointmentTime);
+            client.publish('/appointmentTime', appointmentTime.toString());
             $('#screen-3 .forward-button').removeClass('disabled');
         }
     });
 
     $('.back-button').click(function () {
-        changeState(false);
+        changeState(false, timeoutRegular);
     });
 
     $('.forward-button').click(function () {
 		if (!$(this).hasClass('disabled')) {
-            changeState(true);
+            changeState(true, timeoutRegular);
         }
+    });
+
+    $('#pay').click(function() {
+        moneyCollected = price;
+        resetTimeout(timeoutPaying);
+        checkPayment();
     });
 
     function checkPayment() {
         if (moneyCollected >= price) {
-            currentState++;
             client.publish('/print', '1');
-            changeState(timeoutCheckout);
+            changeState(true, timeoutCheckout);
         }
     }
 
-    function resetTVM(booking = false) {
+    function resetTVM() {
         client.publish('/resettvm', '1');
         $('body').fadeTo(fadeTime, 0, function () {
-            if (!booking) {
+            if (currentState != 5) {
                 location.reload();
             } else {
-                window.location.href = "/booking.php?date=" + appointmentDate + "&time" + appointmentTime;
+                window.location.href = "/booking.php?date=" + appointmentDate + "&time=" + appointmentTime;
             }
         });
     }
 
-    function resetTimeout(timeoutTime = timeoutRegular) {
+    function resetTimeout(timeoutTime) {
         clearTimeout(currentTimeout);
         if (currentState != 0) {
             currentTimeout = setTimeout(resetTVM, timeoutTime);
@@ -138,7 +143,7 @@ $(function () {
         }
     }
 
-    function changeState(direction, timeoutTime = timeoutRegular) {
+    function changeState(direction, timeoutTime) {
         previousState = currentState;
         if (direction) {
             currentState++;
@@ -151,7 +156,7 @@ $(function () {
         setTimeout(hideOldState, fadeTime);
         setTimeout(changeToNewState, fadeTime);
 
-        if (currentState == 0) {
+        if (currentState === 0) {
             resetTVM();
         } else {
             resetTimeout(timeoutTime);
