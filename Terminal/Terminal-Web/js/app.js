@@ -46,28 +46,6 @@ $(function () {
         }
     });
 
-
-    // Functionality
-
-    // $('#appointment-date').click(function() {
-    // 	appointmentDate = '09.05.2018';
-    // 	client.publish('/appointmentDate', appointmentDate);
-    // });
-
-    // $('#appointment-time').click(function() {
-    // 	appointmentTime = '18:00';
-    // 	client.publish('/appointmentTime', appointmentTime);
-    // });
-
-    // $('#language').click(function() {
-    // 	language = 'de';
-    // 	client.publish('/language', language);
-    // });
-
-    // $('#resettvm').click(function() {
-    // 	resetTVM();
-    // });
-
     // Choose Language
     $('#screen-0 .button').click(function () {
         language = $(this).data('language');

@@ -86,8 +86,10 @@ $conn->close();
             <h1>Choose a date:</h1>
         </div>
 
-		<?php for ($date = MIN_DATE; $date <= MAX_DATE; $date++): ?>
-            <a href="#" class="button hollow date-button"
+		<?php for ($date = MIN_DATE; $date <= MAX_DATE; $date++):
+            $timeframe = date('d') + 1 > $date;
+            ?>
+            <a href="#" class="button hollow date-button <?= $timeframe ? 'disabled' : '' ?>"
                data-date="<?= $date ?>"><?= $date <= 9 ? '0' . $date : $date ?>.05.2018</a>
 		<?php endfor; ?>
 
