@@ -29,7 +29,7 @@ $conn->close();
     <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
-<div id="blocking-div"></div>
+<div id="blocking"></div>
 
 
 <div class="row screen" id="screen-0">

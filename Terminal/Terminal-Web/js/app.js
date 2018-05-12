@@ -24,7 +24,7 @@ $(function () {
     var language = '';
     var appointmentDate = '';
     var appointmentTime = '';
-    var $blocking = $('#blocking-div');
+    var $blocking = $('#blocking');
 
 
     // shitr.io Connection
@@ -155,11 +155,13 @@ $(function () {
 
 
     function pauseScreen() {
+        console.log('blocking active');
         $blocking.show();
-        setTimeout(fadeTime * 2, unpauseScreen);
+        setTimeout(unpauseScreen, fadeTime * 2);
     }
 
     function unpauseScreen() {
+        console.log('blocking inactive');
         $blocking.hide();
     }
 
