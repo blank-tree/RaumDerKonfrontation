@@ -28,10 +28,10 @@
         <entry file="file://$PROJECT_DIR$/init-db.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
-              <caret line="20" column="43" lean-forward="true" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
+              <caret line="20" column="49" lean-forward="false" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
               <folding>
                 <element signature="e#6#46#0#PHP" expanded="true" />
-                <marker date="1526124650079" expanded="true" signature="294:359" ph="INSERT INTO ${DB_TABLE}... " />
+                <marker date="1526124698456" expanded="true" signature="294:359" ph="INSERT INTO ${DB_TABLE}... " />
               </folding>
             </state>
           </provider>
@@ -263,12 +263,12 @@
       <option name="presentableId" value="Default" />
       <updated>1526041291191</updated>
       <workItem from="1526041293207" duration="13096000" />
-      <workItem from="1526115545936" duration="3550000" />
+      <workItem from="1526115545936" duration="3599000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16646000" />
+    <option name="totallyTimeSpent" value="16695000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="2560" height="1418" extended-state="6" />
@@ -445,10 +445,10 @@
     <entry file="file://$PROJECT_DIR$/init-db.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
-          <caret line="20" column="43" lean-forward="true" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
+          <caret line="20" column="49" lean-forward="false" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
           <folding>
             <element signature="e#6#46#0#PHP" expanded="true" />
-            <marker date="1526124650079" expanded="true" signature="294:359" ph="INSERT INTO ${DB_TABLE}... " />
+            <marker date="1526124698456" expanded="true" signature="294:359" ph="INSERT INTO ${DB_TABLE}... " />
           </folding>
         </state>
       </provider>
