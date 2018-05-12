@@ -27,11 +27,11 @@
       <file leaf-file-name="init-db.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/init-db.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="57" lean-forward="true" selection-start-line="20" selection-start-column="57" selection-end-line="20" selection-end-column="57" />
+            <state relative-caret-position="315">
+              <caret line="21" column="20" lean-forward="false" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
               <folding>
                 <element signature="e#6#46#0#PHP" expanded="true" />
-                <marker date="1526125428688" expanded="true" signature="294:359" ph="INSERT INTO ${DB_TABLE}... " />
+                <marker date="1526125516600" expanded="true" signature="294:359" ph="INSERT INTO ${DB_TABLE}... " />
               </folding>
             </state>
           </provider>
@@ -263,12 +263,12 @@
       <option name="presentableId" value="Default" />
       <updated>1526041291191</updated>
       <workItem from="1526041293207" duration="13096000" />
-      <workItem from="1526115545936" duration="4157000" />
+      <workItem from="1526115545936" duration="4244000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17253000" />
+    <option name="totallyTimeSpent" value="17340000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="2560" height="1418" extended-state="6" />
@@ -444,11 +444,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/init-db.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="57" lean-forward="true" selection-start-line="20" selection-start-column="57" selection-end-line="20" selection-end-column="57" />
+        <state relative-caret-position="315">
+          <caret line="21" column="20" lean-forward="false" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
           <folding>
             <element signature="e#6#46#0#PHP" expanded="true" />
-            <marker date="1526125428688" expanded="true" signature="294:359" ph="INSERT INTO ${DB_TABLE}... " />
+            <marker date="1526125516600" expanded="true" signature="294:359" ph="INSERT INTO ${DB_TABLE}... " />
           </folding>
         </state>
       </provider>
