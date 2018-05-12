@@ -28,10 +28,10 @@
         <entry file="file://$PROJECT_DIR$/init-db.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
-              <caret line="20" column="50" lean-forward="true" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
+              <caret line="20" column="57" lean-forward="true" selection-start-line="20" selection-start-column="57" selection-end-line="20" selection-end-column="57" />
               <folding>
                 <element signature="e#6#46#0#PHP" expanded="true" />
-                <marker date="1526124698456" expanded="true" signature="294:359" ph="INSERT INTO ${DB_TABLE}... " />
+                <marker date="1526125428688" expanded="true" signature="294:359" ph="INSERT INTO ${DB_TABLE}... " />
               </folding>
             </state>
           </provider>
@@ -263,12 +263,12 @@
       <option name="presentableId" value="Default" />
       <updated>1526041291191</updated>
       <workItem from="1526041293207" duration="13096000" />
-      <workItem from="1526115545936" duration="3870000" />
+      <workItem from="1526115545936" duration="4157000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16966000" />
+    <option name="totallyTimeSpent" value="17253000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="2560" height="1418" extended-state="6" />
@@ -424,14 +424,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/booking.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="45" lean-forward="true" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/settings.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -442,13 +434,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/booking.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="45" lean-forward="true" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/init-db.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
-          <caret line="20" column="50" lean-forward="true" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
+          <caret line="20" column="57" lean-forward="true" selection-start-line="20" selection-start-column="57" selection-end-line="20" selection-end-column="57" />
           <folding>
             <element signature="e#6#46#0#PHP" expanded="true" />
-            <marker date="1526124698456" expanded="true" signature="294:359" ph="INSERT INTO ${DB_TABLE}... " />
+            <marker date="1526125428688" expanded="true" signature="294:359" ph="INSERT INTO ${DB_TABLE}... " />
           </folding>
         </state>
       </provider>
