@@ -24,6 +24,7 @@ $(function () {
     var language = '';
     var appointmentDate = '';
     var appointmentTime = '';
+    var $blocking = $('#blocking-div');
 
 
     // shitr.io Connection
@@ -113,6 +114,7 @@ $(function () {
     }
 
     function resetTimeout(timeoutTime) {
+        pauseScreen();
         clearTimeout(currentTimeout);
         if (currentState != 0) {
             currentTimeout = setTimeout(resetTVM, timeoutTime);
@@ -152,8 +154,13 @@ $(function () {
     }
 
 
-    function pauseAllButtons() {
-        // TODO: $('.button').
+    function pauseScreen() {
+        $blocking.show();
+        setTimeout(fadeTime * 2, unpauseScreen);
+    }
+
+    function unpauseScreen() {
+        $blocking.hide();
     }
 
 

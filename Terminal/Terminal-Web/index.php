@@ -29,6 +29,9 @@ $conn->close();
     <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
+<div id="blocking-div"></div>
+
+
 <div class="row screen" id="screen-0">
     <div class="small-12 columns">
         <h1>Welcome Screen</h1>
