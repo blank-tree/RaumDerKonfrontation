@@ -13,7 +13,7 @@ $time = $_GET['time'];
 if ($time < 22 && $time > 7) {
 	$nextHour = $time - 1;
 }
-$nextHour = $time < 22 ? $time + 1 : 0;
+$nextHour = $time < MAX_TIME ? $time + 1 : 0;
 $success = false;
 
 

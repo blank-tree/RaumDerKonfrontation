@@ -1,6 +1,6 @@
 <?php
 /**
- * inits the mySQL DB
+ * inits and resets the mySQL DB
  */
 
 require_once ('settings.php');
