@@ -16,10 +16,10 @@ mysqli_query($conn, "TRUNCATE TABLE " . DB_TABLE);
 $stmt = $conn->prepare("INSERT INTO " . DB_TABLE . " (date, time, taken) VALUES (?, ?, ?)");
 $stmt->bind_param("ssi", $date, $time, $taken);
 
-$taken = false;
-
 for ($date = MIN_DATE; $date <= MAX_DATE; $date++) {
 	for ($time = MIN_TIME; $time <= MAX_TIME; $time++) {
+		$taken = $time == EXHIBITION_TIME ? TRUE : FALSE;
+		echo $taken;
 		$stmt->execute();
 	}
 }
