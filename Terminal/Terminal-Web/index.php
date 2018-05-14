@@ -156,6 +156,10 @@ $conn->close();
         </div>
     </div>
 
+    <div id="payment" class="small-12 columns">
+        <h1></h1>
+    </div>
+
     <div class="button hollow large" id="pay">
         PAY!
     </div>

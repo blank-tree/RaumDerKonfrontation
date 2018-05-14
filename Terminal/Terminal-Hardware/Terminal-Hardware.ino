@@ -165,25 +165,25 @@ void printReceipt() {
     printer.boldOn();
     printer.setSize('S');
     printer.justify('C');
-    printer.println(F(" \nRaum der Konfrontation"));
+    printer.println(F("\nRaum der Konfrontation"));
     printer.boldOff();
 
     //Ticket berechtigt zum Benuetzen des Raum waehrend diesem Zeitfenster:
     printer.setSize('S');
     printer.justify('C');
-    printer.println(F(" \n  \nTicket berechtigt zum\nBenuetzung des Raum waehrend \ndieses Zeitraums:"));
+    printer.println(F("\n \nTicket berechtigt zum\nBenuetzung des Raum waehrend \ndieses Zeitraums:"));
 
     //Datum und Zeit
     printer.boldOn();
     printer.setSize('M');
     printer.justify('C');
-    printer.println(" \nDatum: " + appointmentDate + ".Juni.2018\nZeit: " + appointmentTime + ":00 - " + appointmentEndingString + ":00\nOrt: 5.T04 (ZHdK/Turm)");
+    printer.println("\nDatum: " + appointmentDate + ".Juni.2018\nZeit: " + appointmentTime + ":00 - " + appointmentEndingString + ":00\nOrt: 5.T04 (ZHdK/Turm)");
     printer.boldOff();
 
     //Der Raum wird 10 Minuten vor Beginn geöffnet. 10 Minuten nach Schluss erscheint das Putzpersonal.
     printer.setSize('S');
     printer.justify('C');
-    printer.println(F(" \nDer Raum wird 10 Minuten vor \nBeginn geoeffnet. \n10 Minuten nach Ende \nerscheint das Putzpersonal.\n \n"));
+    printer.println(F("\nDer Raum wird 10 Minuten vor \nBeginn geoeffnet. \n10 Minuten nach Ende \nerscheint das Putzpersonal.\n \n"));
 
     //Plan Weg Raum
     printer.justify('C');
@@ -191,13 +191,16 @@ void printReceipt() {
 
     //Webseite
     printer.justify('C');
-    printer.println(F(" \n\nwww.raumderkonfrontation.com\n \n "));
+    printer.println(F("\n \nwww.raumderkonfrontation.com\n\n"));
     printer.justify('C');
     printer.println(F("..................."));
 
     //R down
     printer.justify('C');
     printer.printBitmap(R_down_width, R_down_height, R_down_data);
+
+    printer.justify('C');
+    printer.println(F("\n\n\n\n\n\n"));
 
     printer.feed(8);//default is 2
 

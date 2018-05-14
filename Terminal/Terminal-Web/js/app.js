@@ -15,7 +15,7 @@ $(function () {
     var timeoutPaying = 120000; // 2min
     var timeoutCheckout = 10000; // 10sec
     var fadeTime = 400; // 0.5sec
-    var price = 10; // CHF 15.-
+    var price = 10; // CHF 10.-
 
     var currentTimeout;
     var currentState = 0;
@@ -25,6 +25,7 @@ $(function () {
     var appointmentDate = '';
     var appointmentTime = '';
     var $blocking = $('#blocking');
+    var $payment = $('#payment h1 span');
 
 
     // shitr.io Connection
@@ -42,6 +43,7 @@ $(function () {
         if (currentState == 4 && topic == '/moneyCollected') {
             moneyCollected = parseFloat(message.toString());
             console.log('money collected: ' + moneyCollected);
+            $payment.text(moneyCollected <= price ? price - moneyCollected : 0);
             resetTimeout(timeoutPaying);
             checkPayment();
         }
@@ -82,6 +84,7 @@ $(function () {
     });
 
     $('.back-button').click(function () {
+        $payment.text(price);
         changeState(false, timeoutRegular);
     });
 
@@ -170,5 +173,6 @@ $(function () {
 
     resetTimeout(timeoutIdle);
     $('#screen-0').css("opacity", 1);
+    $payment.text(price);
 
 });
