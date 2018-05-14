@@ -23,8 +23,9 @@ Uart Serial2(&sercom3, PIN_SERIAL2_RX, PIN_SERIAL2_TX, PAD_SERIAL2_RX, PAD_SERIA
 Adafruit_Thermal printer(&Serial2);
 
 // Settings
-const boolean PRINTING = false;
-const boolean COINS = false;
+const boolean PRINTING = true;
+const boolean COINS = true;
+const int SEND_INTERVAL = 800; // 0.8s
 
 // Pins
 const int PIN_COINS = 4;
@@ -136,7 +137,7 @@ void loop() {
   }
 
   // publish a message roughly every second.
-  if (moneyChanged && millis() - lastMillis > 1000) {
+  if (moneyChanged && millis() - lastMillis > SEND_INTERVAL) {
     lastMillis = millis();
     moneyChanged = false;
     client.publish("/moneyCollected", String(moneyCollected));
