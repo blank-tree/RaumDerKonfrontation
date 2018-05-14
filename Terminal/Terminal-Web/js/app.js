@@ -43,7 +43,7 @@ $(function () {
         if (currentState == 4 && topic == '/moneyCollected') {
             moneyCollected = parseFloat(message.toString());
             console.log('money collected: ' + moneyCollected);
-            $payment.text(moneyCollected <= price ? price - moneyCollected : 0);
+            $payment.text(moneyCollected <= price ? (price - moneyCollected).toFixed(2) : 0);
             resetTimeout(timeoutPaying);
             checkPayment();
         }
