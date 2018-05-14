@@ -15,12 +15,12 @@ $(function () {
     var timeoutPaying = 120000; // 2min
     var timeoutCheckout = 10000; // 10sec
     var fadeTime = 400; // 0.5sec
-    var price = 30; // CHF 15.-
+    var price = 10; // CHF 15.-
 
     var currentTimeout;
     var currentState = 0;
     var previousState = 0;
-    var moneyCollected = 0;
+    var moneyCollected = 0.0;
     var language = '';
     var appointmentDate = '';
     var appointmentTime = '';
@@ -40,7 +40,7 @@ $(function () {
     client.on('message', function (topic, message) {
         console.log('new message:', topic, message.toString());
         if (currentState == 4 && topic == '/moneyCollected') {
-            moneyCollected = parseInt(message.toString());
+            moneyCollected = parseFloat(message.toString());
             console.log('money collected: ' + moneyCollected);
             resetTimeout(timeoutPaying);
             checkPayment();

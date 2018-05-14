@@ -9,6 +9,7 @@
 #include <WiFi101.h>
 #include <MQTT.h>
 #include "Adafruit_Thermal.h"
+#include <wiring_private.h>
 #include "Plan2.h"
 #include "R_up.h"
 #include "R_down.h"
@@ -107,7 +108,7 @@ void setup() {
 
   connect();
 
-  moneyCollected = 0;
+  moneyCollected = 0.0;
   moneyChanged = false;
   language = "";
   appointmentDate = "";
@@ -145,14 +146,14 @@ void loop() {
 }
 
 void coinInserted() {
-  moneyCollected++;
+  moneyCollected = moneyCollected + 0.10;
   moneyChanged = true;
 }
 
 void printReceipt() {
   if (PRINTING) {
     int appointmentEnding = appointmentTime.toInt() + 1;
-    String appointmentEndingString = appointmentEnding <= 9 ? "0" + String(appointmentTime) : String(appointmentTime);
+    String appointmentEndingString = appointmentEnding <= 9 ? "0" + String(appointmentEnding) : String(appointmentEnding);
     printer.justify('C');
     printer.println(F("...................\n "));
 
@@ -176,7 +177,7 @@ void printReceipt() {
     printer.boldOn();
     printer.setSize('M');
     printer.justify('C');
-    printer.println(F(" \nDatum: " + appointmentDate + ".Juni.2018\nZeit: " + appointmentTime + ":00 - " + appointmentEndingString + ":00\nOrt: 5.T04 (ZHdK/Turm)"));
+    printer.println(" \nDatum: " + appointmentDate + ".Juni.2018\nZeit: " + appointmentTime + ":00 - " + appointmentEndingString + ":00\nOrt: 5.T04 (ZHdK/Turm)");
     printer.boldOff();
 
     //Der Raum wird 10 Minuten vor Beginn geöffnet. 10 Minuten nach Schluss erscheint das Putzpersonal.
@@ -208,7 +209,7 @@ void printReceipt() {
 }
 
 void resetTVM() {
-  moneyCollected = 0;
+  moneyCollected = 0.0;
   appointmentDate = "";
   appointmentTime = "";
 }
