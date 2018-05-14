@@ -13,6 +13,9 @@
 const boolean PRINTING = false;
 const boolean COINS = false;
 
+// Pins
+const int PIN_COINS = 0;
+
 // Shitr.io Connection
 const char ssid[] = "BRIDGE";
 const char pass[] = "internet";
@@ -21,10 +24,12 @@ MQTTClient client;
 unsigned long lastMillis = 0;
 
 // Functionality
-int moneyCollected;
+volatile float moneyCollected;
+boolean moneyChanged;
 String language;
 String appointmentDate;
 String appointmentTime;
+
 
 void connect() {
   Serial.print("checking wifi...");
@@ -83,9 +88,16 @@ void setup() {
   connect();
 
   moneyCollected = 0;
+  moneyChanged = false;
   language = "";
   appointmentDate = "";
   appointmentTime = "";
+
+  if (COINS) {
+    pinMode(PIN_COINS, INPUT_PULLUP);
+    attachInterrupt(PIN_COINS, coinInserted, RISING);
+  }
+  
 }
 
 void loop() {
@@ -96,19 +108,16 @@ void loop() {
   }
 
   // publish a message roughly every second.
-  if (millis() - lastMillis > 1000) {
+  if (moneyChanged && millis() - lastMillis > 1000) {
     lastMillis = millis();
-    moneyCollected++;
+    moneyChanged = false;
     client.publish("/moneyCollected", String(moneyCollected));
   }
 }
 
-void collectMoney() {
-  if (COINS) {
-    
-  } else {
-    
-  }
+void coinInserted() {
+  moneyCollected++;
+  moneyChanged = true;
 }
 
 void printReceipt() {
