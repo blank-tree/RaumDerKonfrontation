@@ -62,7 +62,8 @@ $(function () {
         $('#screen-3 .time-button').removeClass('primary').addClass('hollow');
         $('#screen-3 .forward-button').addClass('disabled');
         appointmentDate = $(this).data('date');
-        client.publish('/appointmentDate', appointmentDate.toString());
+        var appointmentDateMessage = appointmentDate <=9 ? "0" + appointmentDate.toString() : appointmentDate.toString();
+        client.publish('/appointmentDate', appointmentDateMessage);
         $('#screen-2 .forward-button').removeClass('disabled');
         $('#screen-3 .timetables').hide();
         $('#screen-3 #date-' + appointmentDate).show();
@@ -74,7 +75,8 @@ $(function () {
             $('#screen-3 .time-button').removeClass('primary').addClass('hollow');
             $(this).removeClass('hollow').addClass('primary');
             appointmentTime = $(this).data('time');
-            client.publish('/appointmentTime', appointmentTime.toString());
+            var appointmentTimeMessage = appointmentTime <=9 ? "0" + appointmentTime.toString() : appointmentTime.toString();
+            client.publish('/appointmentTime', appointmentTimeMessage);
             $('#screen-3 .forward-button').removeClass('disabled');
         }
     });

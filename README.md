@@ -2,7 +2,7 @@
 
 # RAUM DER KONFRONTATION
 ## BA [Interaction Design](http://iad.zhdk.ch/), [Zurich University of the Arts](http://zhdk.ch/)
-## Fernando Obieta – [blanktree.ch](https://blanktree.ch/) & Claudio Rainolter
+## [Fernando Obieta](http://fernando-obieta.com/) & Claudio Rainolter
 
 Description for the project: [www.raumderkonfrontation.com](http://raumderkonfrontation.com/).
 
@@ -23,4 +23,4 @@ Description for the project: [www.raumderkonfrontation.com](http://raumderkonfro
 - iPad (Terminal)
 - PHP Hosting Service with mySQL (Terminal)
 
-###### Version: 0.16.04 - 180514
+###### Version: 0.16.06 - 180514
