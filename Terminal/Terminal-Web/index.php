@@ -157,7 +157,7 @@ $conn->close();
     </div>
 
     <div id="payment" class="small-12 columns">
-        <h1></h1>
+        <h1>CHF <span></span></h1>
     </div>
 
     <div class="button hollow large" id="pay">
