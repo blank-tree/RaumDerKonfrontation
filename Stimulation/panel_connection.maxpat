@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 34.0, 78.0, 1212.0, 868.0 ],
+		"rect" : [ 34.0, 78.0, 806.0, 869.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -350,7 +350,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1398.5, 1523.0, 92.0, 20.0 ],
+					"patching_rect" : [ 1428.5, 1605.0, 92.0, 20.0 ],
 					"style" : "helpfile_label",
 					"text" : "ended status"
 				}
@@ -362,7 +362,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1342.5, 1571.0, 73.0, 22.0 ],
+					"patching_rect" : [ 1365.5, 1653.0, 73.0, 22.0 ],
 					"style" : "",
 					"text" : "send ended"
 				}
@@ -378,7 +378,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 1342.5, 1523.0, 50.0, 22.0 ],
+					"patching_rect" : [ 1365.5, 1605.0, 50.0, 22.0 ],
 					"style" : ""
 				}
 
@@ -881,7 +881,7 @@
 					"outlettype" : [ "int", "" ],
 					"patching_rect" : [ 1196.0, 1701.0, 79.0, 22.0 ],
 					"style" : "",
-					"text" : "serial b 9600"
+					"text" : "serial c 9600"
 				}
 
 			}
@@ -931,9 +931,9 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1342.5, 1478.0, 129.0, 22.0 ],
+					"patching_rect" : [ 1342.5, 1478.0, 109.0, 22.0 ],
 					"style" : "",
-					"text" : "if $i1 == $i2 then set 1"
+					"text" : "if $i1 == $i2 then 1"
 				}
 
 			}
@@ -1420,7 +1420,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 594.083374, 1878.833496, 79.0, 22.0 ],
 					"style" : "",
-					"text" : "0 47 0 0 0 20"
+					"text" : "0 48 0 0 0 20"
 				}
 
 			}
@@ -2558,7 +2558,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 894.0, 318.0, 49.0, 116.0 ],
 					"style" : "",
-					"text" : "431 1023 1023 492 441 422 1023 461 0 0"
+					"text" : "438 1023 1023 498 484 440 1023 498 0 0"
 				}
 
 			}
@@ -2572,7 +2572,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 891.0, 167.0, 49.0, 129.0 ],
 					"style" : "",
-					"text" : "\"431 1023 1023 492 441 422 1023 461 0 0\""
+					"text" : "\"438 1023 1023 498 484 440 1023 498 0 0\""
 				}
 
 			}
@@ -2625,7 +2625,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 653.0, 167.0, 50.0, 263.0 ],
 					"style" : "",
-					"text" : "52 51 49 32 49 48 50 51 32 49 48 50 51 32 52 57 50 32 52 52 49 32 52 50 50 32 49 48 50 51 32 52 54 49 32 48 32 48"
+					"text" : "52 51 56 32 49 48 50 51 32 49 48 50 51 32 52 57 56 32 52 56 52 32 52 52 48 32 49 48 50 51 32 52 57 56 32 48 32 48"
 				}
 
 			}
@@ -2664,7 +2664,7 @@
 					"outlettype" : [ "int", "" ],
 					"patching_rect" : [ 168.0, 184.0, 79.0, 22.0 ],
 					"style" : "",
-					"text" : "serial c 9600"
+					"text" : "serial b 9600"
 				}
 
 			}
@@ -4254,12 +4254,12 @@
 			}
  ],
 		"parameters" : 		{
+			"obj-95" : [ "live.dial[5]", "live.dial", 0 ],
 			"obj-96" : [ "live.dial[4]", "live.dial", 0 ],
 			"obj-82" : [ "live.dial[7]", "live.dial", 0 ],
-			"obj-97" : [ "live.dial[3]", "live.dial", 0 ],
+			"obj-77" : [ "live.dial[8]", "live.dial", 0 ],
 			"obj-98" : [ "live.dial", "live.dial", 0 ],
-			"obj-95" : [ "live.dial[5]", "live.dial", 0 ],
-			"obj-77" : [ "live.dial[8]", "live.dial", 0 ]
+			"obj-97" : [ "live.dial[3]", "live.dial", 0 ]
 		}
 ,
 		"dependency_cache" : [  ],
