@@ -154,12 +154,17 @@ void printReceipt() {
   if (PRINTING) {
     int appointmentEnding = appointmentTime.toInt() + 1;
     String appointmentEndingString = appointmentEnding <= 9 ? "0" + String(appointmentEnding) : String(appointmentEnding);
-    printer.justify('C');
-    printer.println(F("...................\n "));
+
+
+    // printer.justify('C');
+    // printer.println(F("...................\n "));
 
     //R up
     printer.justify('C');
     printer.printBitmap(R_up_width, R_up_height, R_up_data);
+
+    printer.justify('C');
+    printer.println(F("\n \n"));
 
     //Raum der Konfrontation
     printer.boldOn();
@@ -192,8 +197,8 @@ void printReceipt() {
     //Webseite
     printer.justify('C');
     printer.println(F("\n \nwww.raumderkonfrontation.com\n\n"));
-    printer.justify('C');
-    printer.println(F("..................."));
+    // printer.justify('C');
+    // printer.println(F("..................."));
 
     //R down
     printer.justify('C');
