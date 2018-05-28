@@ -1,7 +1,5 @@
 $(function () {
 
-    $('body').css('background', 'red');
-
     // Statemachine:
     // 0 - Welcome & Language Selection
     // 1 - Description
@@ -31,6 +29,9 @@ $(function () {
     var $time = $('.checkout-time');
     var $end = $('.checkout-endtime');
 
+    $('body, html').on('touchstart touchmove', function(e) {
+        e.preventDefault();
+    });
 
     // shitr.io Connection
     var client = mqtt.connect('mqtt://b23695cf:36a044b175c04e97@broker.shiftr.io', {
