@@ -20,8 +20,41 @@ body {
   -moz-transition: opacity 400ms ease-in-out;
 }
 
+h1 {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+p {
+  line-height: 1.5em;
+  margin: 0;
+}
+
+p .payment {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.accepted-coins {
+  float: left;
+}
+
+.to-pay {
+  float: right;
+  text-align: right;
+}
+
 #screen-0 {
   display: block;
+}
+
+.payment-info {
+  margin-top: 2rem;
 }
 
 a, a:hover, a:visited, a:focus, a:active {
@@ -49,8 +82,14 @@ a, a:hover, a:visited, a:focus, a:active {
   grid-gap: 8px;
 }
 
-.calendar a:nth-child(1) {
-  grid-column: 5;
+.calendar h2 {
+  grid-column: span 4;
+  align-self: center;
+  justify-self: center;
+}
+
+.calendar.time {
+  margin-top: 124px;
 }
 
 .calendar.time a {

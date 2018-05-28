@@ -88,6 +88,8 @@ $conn->close();
 					<h1>Choose a day:</h1>
 				</div>
 				<div class="calendar">
+					<h2 class="content-de">Juni</h2>
+					<h2 class="content-en">June</h2>
 					<?php for ($date = MIN_DATE; $date <= MAX_DATE; $date++):
 						$timeframe = date('d') + 1 > $date;
 						?>
@@ -114,7 +116,7 @@ $conn->close();
 			<div class="grid date">
 				<div class="container">
 					<div class="content-de">
-						<h1>Wahle die Startuhrzeit für deine Stunde:</h1>
+						<h1>Uhr:</h1>
 					</div>
 					<div class="content-en">
 						<h1>Choose the start time for your hour:</h1>
@@ -150,17 +152,19 @@ $conn->close();
 					<div class="container">
 						<div class="content-de">
 							<h1>Bezahle den Betrag um die Buchung abzuschliessen</h1>
-							<h3>Dein Termin:</h3>
+							<h2>Dein Termin:</h2>
 							<p>Datum: <span class="checkout-date"></span>. Juni 2018</p>
 							<p>Zeit: <span class="checkout-time"></span>:00 - <span class="checkout-endtime"></span>:00</p>
 							<p>Ort: (wird auf der Quittung ersichtlich)</p>
-							<div class="accepted-coins">
-								<p>Akzeptierte Münzen:</p>
-								<p>5.&mdash; / 2.&mdash; / 1.&mdash; / &mdash;.50 / &mdash;.20 / &mdash;.10</p>
-							</div>
-							<div class="to-pay">
-								<p>Noch zu zahlen: <span class="payment"></span></p>
-								<p>Kein Rückgeld!</p>
+							<div class="payment-info">
+								<div class="accepted-coins">
+									<p>Akzeptierte Münzen:</p>
+									<p>5.&mdash; / 2.&mdash; / 1.&mdash; / &mdash;.50 / &mdash;.20 / &mdash;.10</p>
+								</div>
+								<div class="to-pay">
+									<p>Noch zu zahlen: <span class="payment"></span></p>
+									<p>Kein Rückgeld!</p>
+								</div>
 							</div>
 							<div>
 								<a class="button back-button">Zurück</a>
@@ -168,17 +172,19 @@ $conn->close();
 						</div>
 						<div class="content-en">
 							<h1>Insert coins to complete the booking</h1>
-							<h3>Your appointment:</h3>
+							<h2>Your appointment:</h2>
 							<p>Date: <span class="checkout-date"></span>. June 2018</p>
 							<p>Time: <span class="checkout-time"></span>:00 - <span class="checkout-endtime"></span>:00</p>
 							<p>Place: (Will be apparent on the receipt)</p>
-							<div class="accepted-coins">
-								<p>Accepted coins:</p>
-								<p>5.&mdash; / 2.&mdash; / 1.&mdash; / &mdash;.50 / &mdash;.20 / &mdash;.10</p>
-							</div>
-							<div class="to-pay">
-								<p>Remaining: <span class="payment"></span></p>
-								<p>No change!</p>
+							<div class="payment-info">
+								<div class="accepted-coins">
+									<p>Accepted coins:</p>
+									<p>5.&mdash; / 2.&mdash; / 1.&mdash; / &mdash;.50 / &mdash;.20 / &mdash;.10</p>
+								</div>
+								<div class="to-pay">
+									<p>Remaining: <span class="payment"></span></p>
+									<p>No change!</p>
+								</div>
 							</div>
 							<div>
 								<a class="button back-button">Back</a>
@@ -196,19 +202,19 @@ $conn->close();
 					<div class="container">
 						<div class="content-de">
 							<h1>Entnehme deine Quittung</h1>
-							<h3>Dein Termin:</h3>
+							<h2>Dein Termin:</h2>
 							<p>Datum: <span class="checkout-date"></span>. Juni 2018</p>
 							<p>Zeit: <span class="checkout-time"></span>:00 - <span class="checkout-endtime"></span>:00</p>
-							<p>Ort: 5.T04 (ZHdK/Turm)</p>
-							<p>Besten Dank für deine Buchung.</p>
+							<p>Ort: 5.T04 (ZHdK/Turm)</p> <br>
+							<h2>Besten Dank für deine Buchung.</h2>
 						</div>
 						<div class="content-en">
 							<h1>Take your receipt</h1>
-							<h3>Your appointment:</h3>
+							<h2>Your appointment:</h2>
 							<p>Date: <span class="checkout-date"></span>. June 2018</p>
 							<p>Time: <span class="checkout-time"></span>:00 - <span class="checkout-endtime"></span>:00</p>
-							<p>Place: 5.T04 (ZHdK/Tower)</p>
-							<p>Thank you for your booking</p>
+							<p>Place: 5.T04 (ZHdK/Tower)</p> <br>
+							<h2>Thank you for your booking</h2>
 						</div>
 					</div>
 				</div>
