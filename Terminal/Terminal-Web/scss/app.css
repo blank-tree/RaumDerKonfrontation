@@ -50,6 +50,7 @@ p .payment {
 
 #screen-0 {
   display: block;
+  opacity: 1;
 }
 
 .payment-info {
