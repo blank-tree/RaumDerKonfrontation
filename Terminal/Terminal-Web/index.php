@@ -173,7 +173,7 @@ $conn->close();
 				</div>
 			</div>
 
-		<script src="node_modules/jQuery/dist/jquery.min.js"></script>
+		<script src="node_modules/jquery/dist/jquery.min.js"></script>
 		<script src="node_modules/mqtt/dist/mqtt.min.js"></script>
 		<script src="js/app.js"></script>
 	</body>
