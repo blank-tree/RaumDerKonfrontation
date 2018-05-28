@@ -143,22 +143,44 @@ $conn->close();
 			<div class="screen grid" id="screen-4">
 				<div class="container">
 					<div class="content-de">
-						<h1>Bezahlung</h1>
+						<h1>Bezahle den Betrag um die Buchung abzuschliessen</h1>
+						<h3>Dein Termin:</h3>
+						<p>Datum: <span class="checkout-date"></span>. Juni 2018</p>
+						<p>Zeit: <span class="checkout-time"></span>:00 - <span class="checkout-endtime"></span>:00</p>
+						<p>Ort: (wird auf der Quittung ersichtlich)</p>
+						<div class="accepted-coins">
+							<p>Akzeptierte Münzen:</p>
+							<p>5.&mdash; / 2.&mdash; / 1.&mdash; / &mdash;.50 / &mdash;.20 / &mdash;.10</p>
+						</div>
+						<div class="to-pay">
+							<p>Noch zu zahlen: <span class="payment"></span></p>
+							<p>Kein Rückgeld!</p>
+						</div>
+						<div>
+							<a class="button back-button">Zurück</a>
+						</div>
 					</div>
 					<div class="content-en">
-						<h1>Payment</h1>
+						<h1>Insert coins to complete the booking</h1>
+						<h3>Your appointment:</h3>
+						<p>Date: <span class="checkout-date"></span>. June 2018</p>
+						<p>Time: <span class="checkout-time"></span>:00 - <span class="checkout-endtime"></span>:00</p>
+						<p>Place: (Will be apparent on the receipt)</p>
+						<div class="accepted-coins">
+							<p>Accepted coins:</p>
+							<p>5.&mdash; / 2.&mdash; / 1.&mdash; / &mdash;.50 / &mdash;.20 / &mdash;.10</p>
+						</div>
+						<div class="to-pay">
+							<p>Remaining: <span class="payment"></span></p>
+							<p>No change!</p>
+						</div>
+						<div>
+							<a class="button back-button">Back</a>
+						</div>
 					</div>
 
-					<div id="payment" class="columns">
-						<h1>CHF <span></span></h1>
-					</div>
 					<div class="button" id="pay">PAY!</div>
-					<div class="content-de">
-						<a class="button back-button">Zurück</a>
-					</div>
-					<div class="content-en">
-						<a class="button back-button">Back</a>
-					</div>
+
 				</div>
 			</div>
 
@@ -166,9 +188,19 @@ $conn->close();
 				<div class="container">
 					<div class="content-de">
 						<h1>Entnehme deine Quittung</h1>
+						<h3>Dein Termin:</h3>
+						<p>Datum: <span class="checkout-date"></span>. Juni 2018</p>
+						<p>Zeit: <span class="checkout-time"></span>:00 - <span class="checkout-endtime"></span>:00</p>
+						<p>Ort: 5.T04 (ZHdK/Turm)</p>
+						<p>Besten Dank für deine Buchung.</p>
 					</div>
 					<div class="content-en">
 						<h1>Take your receipt</h1>
+						<h3>Your appointment:</h3>
+						<p>Date: <span class="checkout-date"></span>. June 2018</p>
+						<p>Time: <span class="checkout-time"></span>:00 - <span class="checkout-endtime"></span>:00</p>
+						<p>Place: 5.T04 (ZHdK/Tower)</p>
+						<p>Thank you for your booking</p>
 					</div>
 				</div>
 			</div>

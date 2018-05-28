@@ -24,14 +24,17 @@ $(function () {
     var appointmentDate = '';
     var appointmentTime = '';
     var $blocking = $('#blocking');
-    var $payment = $('#payment h1 span');
+    var $payment = $('.payment');
+    var $date = $('.checkout-date');
+    var $time = $('.checkout-time');
+    var $end = $('.checkout-endtime');
 
 
     // shitr.io Connection
     var client = mqtt.connect('mqtt://b23695cf:36a044b175c04e97@broker.shiftr.io', {
         clientId: 'RdK-iPad'
     });
-    
+
     client.on('connect', function () {
         console.log('client has connected!');
         client.subscribe('/moneyCollected');
@@ -65,6 +68,7 @@ $(function () {
         appointmentDate = $(this).data('date');
         var appointmentDateMessage = appointmentDate <=9 ? "0" + appointmentDate.toString() : appointmentDate.toString();
         client.publish('/appointmentDate', appointmentDateMessage);
+        $date.text(appointmentDateMessage);
         $('#screen-2 .forward-button').removeClass('disabled');
         $('#screen-3 .timetables').hide();
         $('#screen-3 #date-' + appointmentDate).show();
@@ -78,6 +82,9 @@ $(function () {
             appointmentTime = $(this).data('time');
             var appointmentTimeMessage = appointmentTime <=9 ? "0" + appointmentTime.toString() : appointmentTime.toString();
             client.publish('/appointmentTime', appointmentTimeMessage);
+            var endTimeMessage = appointmentTime + 1 <= 9 ? "0" + (appointmentTime + 1) : appointmentTime + 1;
+            $time.text(appointmentTimeMessage);
+            $end.text(endTimeMessage);
             $('#screen-3 .forward-button').removeClass('disabled');
         }
     });
