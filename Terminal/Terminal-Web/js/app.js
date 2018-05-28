@@ -12,7 +12,7 @@ $(function () {
     var timeoutIdle = 600000; // 10min
     var timeoutRegular = 60000; // 1min
     var timeoutPaying = 120000; // 2min
-    var timeoutCheckout = 10000; // 10sec
+    var timeoutCheckout = 30000; // 30sec
     var fadeTime = 400; // 0.5sec
     var price = 10; // CHF 10.-
 
@@ -29,9 +29,9 @@ $(function () {
     var $time = $('.checkout-time');
     var $end = $('.checkout-endtime');
 
-    $('body, html').on('touchstart touchmove', function(e) {
-        e.preventDefault();
-    });
+    // $('body, html').on('touchstart touchmove', function(e) {
+    //     e.preventDefault();
+    // });
 
     // shitr.io Connection
     var client = mqtt.connect('mqtt://b23695cf:36a044b175c04e97@broker.shiftr.io', {
@@ -48,7 +48,7 @@ $(function () {
         if (currentState == 4 && topic == '/moneyCollected') {
             moneyCollected = parseFloat(message.toString());
             console.log('money collected: ' + moneyCollected);
-            $payment.text(moneyCollected <= price ? (price - moneyCollected).toFixed(2) : 0);
+            $payment.text(moneyCollected <= price ? (price - moneyCollected).toFixed(2) : 0.00);
             resetTimeout(timeoutPaying);
             checkPayment();
         }
@@ -178,6 +178,6 @@ $(function () {
 
     resetTimeout(timeoutIdle);
     $('#screen-0').css("opacity", 1);
-    $payment.text(price);
+    $payment.text(price.toFixed(2));
 
 });

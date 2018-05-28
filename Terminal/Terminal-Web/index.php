@@ -54,7 +54,7 @@ $conn->close();
 					<br><br>
 					Nun wurde ein Raum geschaffen um dies zu ändern.
 				</p>
-				<div class="">
+				<div>
 					<a class="button back-button">Zurück</a>
 					<a class="button forward-button">Fortfahren</a>
 				</div>
@@ -71,7 +71,7 @@ $conn->close();
 					<br><br>
 					Room has been created to change that.
 				</p>
-				<div class="">
+				<div>
 					<a class="button back-button">Back</a>
 					<a class="button forward-button">Continue</a>
 				</div>
@@ -98,13 +98,13 @@ $conn->close();
 						<?php endfor; ?>
 					</div>
 					<div class="content-de">
-						<div class="">
+						<div>
 							<a class="button back-button">Zurück</a>
 							<a class="button forward-button disabled">Fortfahren</a>
 						</div>
 					</div>
 					<div class="content-en">
-						<div class="">
+						<div>
 							<a class="button back-button">Back</a>
 							<a class="button forward-button disabled">Continue</a>
 						</div>
@@ -191,7 +191,7 @@ $conn->close();
 							</div>
 						</div>
 
-						<div class="button" id="pay">PAY!</div>
+						<!-- <div class="button" id="pay">PAY!</div> -->
 
 					</div>
 				</div>
