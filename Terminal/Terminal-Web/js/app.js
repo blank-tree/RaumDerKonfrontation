@@ -1,4 +1,3 @@
-$(document).foundation();
 $(function () {
 
     // Statemachine:
@@ -32,7 +31,7 @@ $(function () {
     var client = mqtt.connect('mqtt://b23695cf:36a044b175c04e97@broker.shiftr.io', {
         clientId: 'RdK-iPad'
     });
-
+    
     client.on('connect', function () {
         console.log('client has connected!');
         client.subscribe('/moneyCollected');
