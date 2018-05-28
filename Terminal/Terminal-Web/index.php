@@ -32,175 +32,184 @@ $conn->close();
 </head>
 <body>
 	<div id="blocking"></div>
-
-	<div class="screen chose-lang grid" id="screen-0">
-		<div class="buttons">
-			<a class="button" data-language="de">Deutsch</a>
-			<a class="button" data-language="en">English</a>
-		</div>
-	</div>
-
-	<div class="screen grid" id="screen-1">
-		<div class="content-de container">
-			<h1>Raum der Konfrontation</h1>
-			<p>
-				Wir reflektieren; wir konfrontieren; wir fragen; jeden Tag. Wo und warum? Zu welchem Zweck? Mit welchen
-				Positionen? Und mit wem, abgesehen von uns selbst?
-				<br><br>
-				Der Prozess der Reflexion ermöglicht uns selbst, unser Handeln und unsere Umgebung besser zu verstehen
-				und mitzufühlen. Die Möglichkeit und Zeit diese aktiv zu praktizieren fehlt jedoch oft im Alltag.
-				<br><br>
-				Nun wurde ein Raum geschaffen um dies zu ändern.
-			</p>
-			<div class="">
-				<a class="button back-button">Zurück</a>
-				<a class="button forward-button">Fortfahren</a>
-			</div>
-		</div>
-		<div class="content-en container">
-			<h1>Room of Confrontation</h1>
-			<p>
-				We reflect; we confront; we ask; every day. Where and why? To what purpose? From which perspective? And
-				with whom besides ourselves?
-				<br><br>
-				The process of reflection enables us to better feel and understand ourselves, our actions and our
-				environment. Yet the possibility and time to actively practice this is too often missing in our everyday
-				lives.
-				<br><br>
-				Room has been created to change that.
-			</p>
-			<div class="">
-				<a class="button back-button">Back</a>
-				<a class="button forward-button">Continue</a>
+	<div class="screen" id="screen-0">
+		<div class="chose-lang grid">
+			<div class="buttons">
+				<a class="button" data-language="de">Deutsch</a>
+				<a class="button" data-language="en">English</a>
 			</div>
 		</div>
 	</div>
 
-	<div class="screen grid date" id="screen-2">
-		<div class="container">
-			<div class="content-de">
-				<h1>Wähle Tag:</h1>
-			</div>
-			<div class="content-en">
-				<h1>Choose a day:</h1>
-			</div>
-			<div class="calendar">
-				<?php for ($date = MIN_DATE; $date <= MAX_DATE; $date++):
-					$timeframe = date('d') + 1 > $date;
-					?>
-					<a class="button date-button <?= $timeframe ? 'disabled' : '' ?>"
-						data-date="<?= $date ?>"><?= $date <= 9 ? '0' . $date : $date ?></a>
-					<?php endfor; ?>
+	<div class="screen" id="screen-1">
+		<div class="grid">
+			<div class="content-de container">
+				<h1>Raum der Konfrontation</h1>
+				<p>
+					Wir reflektieren; wir konfrontieren; wir fragen; jeden Tag. Wo und warum? Zu welchem Zweck? Mit welchen
+					Positionen? Und mit wem, abgesehen von uns selbst?
+					<br><br>
+					Der Prozess der Reflexion ermöglicht uns selbst, unser Handeln und unsere Umgebung besser zu verstehen
+					und mitzufühlen. Die Möglichkeit und Zeit diese aktiv zu praktizieren fehlt jedoch oft im Alltag.
+					<br><br>
+					Nun wurde ein Raum geschaffen um dies zu ändern.
+				</p>
+				<div class="">
+					<a class="button back-button">Zurück</a>
+					<a class="button forward-button">Fortfahren</a>
 				</div>
-				<div class="content-de">
-					<div class="">
-						<a class="button back-button">Zurück</a>
-						<a class="button forward-button disabled">Fortfahren</a>
-					</div>
-				</div>
-				<div class="content-en">
-					<div class="">
-						<a class="button back-button">Back</a>
-						<a class="button forward-button disabled">Continue</a>
-					</div>
+			</div>
+			<div class="content-en container">
+				<h1>Room of Confrontation</h1>
+				<p>
+					We reflect; we confront; we ask; every day. Where and why? To what purpose? From which perspective? And
+					with whom besides ourselves?
+					<br><br>
+					The process of reflection enables us to better feel and understand ourselves, our actions and our
+					environment. Yet the possibility and time to actively practice this is too often missing in our everyday
+					lives.
+					<br><br>
+					Room has been created to change that.
+				</p>
+				<div class="">
+					<a class="button back-button">Back</a>
+					<a class="button forward-button">Continue</a>
 				</div>
 			</div>
 		</div>
-
-		<div class="screen grid date" id="screen-3">
+	</div>
+	<div class="screen" id="screen-2">
+		<div class="grid date">
 			<div class="container">
 				<div class="content-de">
-					<h1>Wahle die Startuhrzeit für deine Stunde:</h1>
+					<h1>Wähle Tag:</h1>
 				</div>
 				<div class="content-en">
-					<h1>Choose the start time for your hour:</h1>
+					<h1>Choose a day:</h1>
 				</div>
+				<div class="calendar">
+					<?php for ($date = MIN_DATE; $date <= MAX_DATE; $date++):
+						$timeframe = date('d') + 1 > $date;
+						?>
+						<a class="button date-button <?= $timeframe ? 'disabled' : '' ?>"
+							data-date="<?= $date ?>"><?= $date <= 9 ? '0' . $date : $date ?></a>
+						<?php endfor; ?>
+					</div>
+					<div class="content-de">
+						<div class="">
+							<a class="button back-button">Zurück</a>
+							<a class="button forward-button disabled">Fortfahren</a>
+						</div>
+					</div>
+					<div class="content-en">
+						<div class="">
+							<a class="button back-button">Back</a>
+							<a class="button forward-button disabled">Continue</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="screen" id="screen-3">
+			<div class="grid date">
+				<div class="container">
+					<div class="content-de">
+						<h1>Wahle die Startuhrzeit für deine Stunde:</h1>
+					</div>
+					<div class="content-en">
+						<h1>Choose the start time for your hour:</h1>
+					</div>
 
-				<?php for ($date = MIN_DATE; $date <= MAX_DATE; $date++): ?>
-					<div class="timetables" id="date-<?= $date ?>">
-						<div class="calendar time">
-							<?php for ($time = MIN_TIME; $time <= MAX_TIME; $time++):
-								$taken = $timetable[$date][$time] ?>
-								<a class="button time-button <?= $taken ? 'disabled' : '' ?>"
-									data-time="<?= $time ?>"><?= $time <= 9 ? '0' . $time : $time ?>:00</a>
-								<?php endfor; ?>
+					<?php for ($date = MIN_DATE; $date <= MAX_DATE; $date++): ?>
+						<div class="timetables" id="date-<?= $date ?>">
+							<div class="calendar time">
+								<?php for ($time = MIN_TIME; $time <= MAX_TIME; $time++):
+									$taken = $timetable[$date][$time] ?>
+									<a class="button time-button <?= $taken ? 'disabled' : '' ?>"
+										data-time="<?= $time ?>"><?= $time <= 9 ? '0' . $time : $time ?>:00</a>
+									<?php endfor; ?>
+								</div>
+							</div>
+						<?php endfor; ?>
+
+						<div class="content-de">
+							<a class="button back-button">Zurück</a>
+							<a class="button forward-button disabled">Fortfahren</a>
+						</div>
+						<div class="content-en">
+							<a class="button back-button">Back</a>
+							<a class="button forward-button disabled">Continue</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="screen" id="screen-4">
+				<div class="grid">
+					<div class="container">
+						<div class="content-de">
+							<h1>Bezahle den Betrag um die Buchung abzuschliessen</h1>
+							<h3>Dein Termin:</h3>
+							<p>Datum: <span class="checkout-date"></span>. Juni 2018</p>
+							<p>Zeit: <span class="checkout-time"></span>:00 - <span class="checkout-endtime"></span>:00</p>
+							<p>Ort: (wird auf der Quittung ersichtlich)</p>
+							<div class="accepted-coins">
+								<p>Akzeptierte Münzen:</p>
+								<p>5.&mdash; / 2.&mdash; / 1.&mdash; / &mdash;.50 / &mdash;.20 / &mdash;.10</p>
+							</div>
+							<div class="to-pay">
+								<p>Noch zu zahlen: <span class="payment"></span></p>
+								<p>Kein Rückgeld!</p>
+							</div>
+							<div>
+								<a class="button back-button">Zurück</a>
 							</div>
 						</div>
-					<?php endfor; ?>
+						<div class="content-en">
+							<h1>Insert coins to complete the booking</h1>
+							<h3>Your appointment:</h3>
+							<p>Date: <span class="checkout-date"></span>. June 2018</p>
+							<p>Time: <span class="checkout-time"></span>:00 - <span class="checkout-endtime"></span>:00</p>
+							<p>Place: (Will be apparent on the receipt)</p>
+							<div class="accepted-coins">
+								<p>Accepted coins:</p>
+								<p>5.&mdash; / 2.&mdash; / 1.&mdash; / &mdash;.50 / &mdash;.20 / &mdash;.10</p>
+							</div>
+							<div class="to-pay">
+								<p>Remaining: <span class="payment"></span></p>
+								<p>No change!</p>
+							</div>
+							<div>
+								<a class="button back-button">Back</a>
+							</div>
+						</div>
 
-					<div class="content-de">
-						<a class="button back-button">Zurück</a>
-						<a class="button forward-button disabled">Fortfahren</a>
-					</div>
-					<div class="content-en">
-						<a class="button back-button">Back</a>
-						<a class="button forward-button disabled">Continue</a>
+						<div class="button" id="pay">PAY!</div>
+
 					</div>
 				</div>
 			</div>
 
-
-			<div class="screen grid" id="screen-4">
-				<div class="container">
-					<div class="content-de">
-						<h1>Bezahle den Betrag um die Buchung abzuschliessen</h1>
-						<h3>Dein Termin:</h3>
-						<p>Datum: <span class="checkout-date"></span>. Juni 2018</p>
-						<p>Zeit: <span class="checkout-time"></span>:00 - <span class="checkout-endtime"></span>:00</p>
-						<p>Ort: (wird auf der Quittung ersichtlich)</p>
-						<div class="accepted-coins">
-							<p>Akzeptierte Münzen:</p>
-							<p>5.&mdash; / 2.&mdash; / 1.&mdash; / &mdash;.50 / &mdash;.20 / &mdash;.10</p>
+			<div class="screen" id="screen-5">
+				<div class="grid">
+					<div class="container">
+						<div class="content-de">
+							<h1>Entnehme deine Quittung</h1>
+							<h3>Dein Termin:</h3>
+							<p>Datum: <span class="checkout-date"></span>. Juni 2018</p>
+							<p>Zeit: <span class="checkout-time"></span>:00 - <span class="checkout-endtime"></span>:00</p>
+							<p>Ort: 5.T04 (ZHdK/Turm)</p>
+							<p>Besten Dank für deine Buchung.</p>
 						</div>
-						<div class="to-pay">
-							<p>Noch zu zahlen: <span class="payment"></span></p>
-							<p>Kein Rückgeld!</p>
+						<div class="content-en">
+							<h1>Take your receipt</h1>
+							<h3>Your appointment:</h3>
+							<p>Date: <span class="checkout-date"></span>. June 2018</p>
+							<p>Time: <span class="checkout-time"></span>:00 - <span class="checkout-endtime"></span>:00</p>
+							<p>Place: 5.T04 (ZHdK/Tower)</p>
+							<p>Thank you for your booking</p>
 						</div>
-						<div>
-							<a class="button back-button">Zurück</a>
-						</div>
-					</div>
-					<div class="content-en">
-						<h1>Insert coins to complete the booking</h1>
-						<h3>Your appointment:</h3>
-						<p>Date: <span class="checkout-date"></span>. June 2018</p>
-						<p>Time: <span class="checkout-time"></span>:00 - <span class="checkout-endtime"></span>:00</p>
-						<p>Place: (Will be apparent on the receipt)</p>
-						<div class="accepted-coins">
-							<p>Accepted coins:</p>
-							<p>5.&mdash; / 2.&mdash; / 1.&mdash; / &mdash;.50 / &mdash;.20 / &mdash;.10</p>
-						</div>
-						<div class="to-pay">
-							<p>Remaining: <span class="payment"></span></p>
-							<p>No change!</p>
-						</div>
-						<div>
-							<a class="button back-button">Back</a>
-						</div>
-					</div>
-
-					<div class="button" id="pay">PAY!</div>
-
-				</div>
-			</div>
-
-			<div class="screen grid" id="screen-5">
-				<div class="container">
-					<div class="content-de">
-						<h1>Entnehme deine Quittung</h1>
-						<h3>Dein Termin:</h3>
-						<p>Datum: <span class="checkout-date"></span>. Juni 2018</p>
-						<p>Zeit: <span class="checkout-time"></span>:00 - <span class="checkout-endtime"></span>:00</p>
-						<p>Ort: 5.T04 (ZHdK/Turm)</p>
-						<p>Besten Dank für deine Buchung.</p>
-					</div>
-					<div class="content-en">
-						<h1>Take your receipt</h1>
-						<h3>Your appointment:</h3>
-						<p>Date: <span class="checkout-date"></span>. June 2018</p>
-						<p>Time: <span class="checkout-time"></span>:00 - <span class="checkout-endtime"></span>:00</p>
-						<p>Place: 5.T04 (ZHdK/Tower)</p>
-						<p>Thank you for your booking</p>
 					</div>
 				</div>
 			</div>

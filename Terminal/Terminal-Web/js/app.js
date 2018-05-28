@@ -143,9 +143,13 @@ $(function () {
         }
 
         $('#screen-' + previousState).css('opacity', 0);
-        $('#screen-' + currentState).show();
-        setTimeout(hideOldState, fadeTime);
-        setTimeout(changeToNewState, fadeTime);
+        setTimeout(function() {
+            $('#screen-' + previousState).hide();
+            $('#screen-' + currentState).show();
+        }, fadeTime);
+        setTimeout(function() {
+            $('#screen-' + currentState).css('opacity', 1);
+        }, fadeTime + 100);
 
         if (currentState === 0) {
             resetTVM();
@@ -154,14 +158,6 @@ $(function () {
         }
 
         console.log('changed from state ' + previousState + ' to state ' + currentState);
-    }
-
-    function hideOldState() {
-        $('#screen-' + previousState).hide();
-    }
-
-    function changeToNewState() {
-        $('#screen-' + currentState).css('opacity', 1);
     }
 
 

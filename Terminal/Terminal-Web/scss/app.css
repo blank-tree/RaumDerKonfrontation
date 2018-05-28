@@ -14,10 +14,14 @@ body {
 .screen {
   opacity: 0;
   display: none;
-  transition: opacity 400ms ease;
+  transition: opacity 400ms ease-in-out;
   -webkit-transition: opacity 400ms ease-in-out;
   -ms-transition: opacity 400ms ease-in-out;
   -moz-transition: opacity 400ms ease-in-out;
+}
+
+#screen-0 {
+  display: block;
 }
 
 a, a:hover, a:visited, a:focus, a:active {
