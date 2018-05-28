@@ -1,5 +1,7 @@
 $(function () {
 
+    $('body').css('background', 'red');
+
     // Statemachine:
     // 0 - Welcome & Language Selection
     // 1 - Description
