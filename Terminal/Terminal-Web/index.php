@@ -26,7 +26,7 @@ $conn->close();
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<title>Raum der Konfrontation // Terminal</title>
-	<link rel="stylesheet" href="https://use.typekit.net/jxn5ehv.css">
+	<!-- <link rel="stylesheet" href="https://use.typekit.net/jxn5ehv.css"> -->
 	<link rel="stylesheet" href="scss/app.min.css">
 
 </head>
