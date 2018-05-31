@@ -2,12 +2,9 @@
  * Terminal-Hardware.ino
  * Transfers the amount of money payed to the iPad 
  * and receives the command to print the receipt
- * Board: MKR1000
+ * Board: Arduino UNO
  */
 
-#include <SPI.h>
-#include <WiFi101.h>
-#include <MQTT.h>
 #include "Adafruit_Thermal.h"
 #include <wiring_private.h>
 #include "Plan2.h"
@@ -32,14 +29,10 @@ const int SEND_INTERVAL = 800; // 0.8s
 const int PIN_COINS = 4;
 const int PIN_PRINTER = 7;
 
-// Shitr.io Connection
-const char ssid[] = "BRIDGE";
-const char pass[] = "internet";
-WiFiClient net;
-MQTTClient client;
-unsigned long lastMillis = 0;
+
 
 // Functionality
+unsigned long lastMillis = 0;
 volatile float moneyCollected;
 boolean moneyChanged;
 String language;
@@ -52,31 +45,8 @@ void SERCOM3_Handler() {   // Interrupt handler for SERCOM3
   Serial2.IrqHandler();
 }
 
-void connect() {
-  Serial.print("checking wifi...");
-  while (WiFi.status() != WL_CONNECTED) {
-    Serial.print(".");
-    delay(1000);
-  }
-
-  Serial.print("\nconnecting...");
-  while (!client.connect("RdK-Arduino", "b23695cf", "36a044b175c04e97")) {
-    Serial.print(".");
-    delay(1000);
-  }
-
-  Serial.println("\nconnected!");
-
-  client.subscribe("/language");
-  client.subscribe("/appointmentDate");
-  client.subscribe("/appointmentTime");
-  client.subscribe("/print");
-  client.subscribe("/resettvm");
-  // client.unsubscribe("/hello");
-}
-
-void messageReceived(String &topic, String &payload) {
-  Serial.println("incoming: " + topic + " - " + payload);
+void messageReceived(String topic, String payload) {
+  // Serial.println("incoming: " + topic + " - " + payload);
 
   if (topic == "/language") {
     // Serial.println("Language is " + payload);
@@ -99,14 +69,6 @@ void messageReceived(String &topic, String &payload) {
 
 void setup() {
   Serial.begin(9600);
-  WiFi.begin(ssid, pass);
-
-  // Note: Local domain names (e.g. "Computer.local" on OSX) are not supported by Arduino.
-  // You need to set the IP address directly.
-  client.begin("broker.shiftr.io", net);
-  client.onMessage(messageReceived);
-
-  connect();
 
   moneyCollected = 0.0;
   moneyChanged = false;
@@ -131,17 +93,17 @@ void setup() {
 }
 
 void loop() {
-  client.loop();
 
-  if (!client.connected()) {
-    connect();
+  while(Serial.available()) {
+    String receivedMessage = Serial.readString();
+    messageReceived(getValue(receivedMessage, ':', 0), getValue(receivedMessage, ':', 1));
   }
 
-  // publish a message roughly every second.
+
   if (moneyChanged && millis() - lastMillis > SEND_INTERVAL) {
     lastMillis = millis();
     moneyChanged = false;
-    client.publish("/moneyCollected", String(moneyCollected));
+    Serial.println(String(moneyCollected));
   }
 }
 
@@ -220,4 +182,21 @@ void resetTVM() {
   moneyCollected = 0.0;
   appointmentDate = "";
   appointmentTime = "";
+}
+
+// by H. Pauwelyn
+// https://arduino.stackexchange.com/a/1237
+String getValue(String data, char separator, int index) {
+    int found = 0;
+    int strIndex[] = { 0, -1 };
+    int maxIndex = data.length() - 1;
+
+    for (int i = 0; i <= maxIndex && found <= index; i++) {
+        if (data.charAt(i) == separator || i == maxIndex) {
+            found++;
+            strIndex[0] = strIndex[1] + 1;
+            strIndex[1] = (i == maxIndex) ? i+1 : i;
+        }
+    }
+    return found > index ? data.substring(strIndex[0], strIndex[1]) : "";
 }
