@@ -178,6 +178,6 @@ $(function () {
 
     resetTimeout(timeoutIdle);
     $('#screen-0').css("opacity", 1);
-    $payment.text(price.toFixed(2));
+    $payment.text((price / 100).toFixed(2));
 
 });
