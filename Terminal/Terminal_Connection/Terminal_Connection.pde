@@ -1,8 +1,12 @@
 import mqtt.*;
 import processing.serial.*;
 
+final static int SEND_INTERVAL = 800; // 0.8sec
+
+long lastInterval;
 MQTTClient client;
-Serial myPort;
+Serial arduinoPort;
+float moneyCollected;
 
 void setup() {
   client = new MQTTClient(this);
@@ -14,14 +18,37 @@ void setup() {
   client.subscribe("/resettvm");
   
   printArray(Serial.list());
+<<<<<<< HEAD
   myPort = new Serial(this, Serial.list()[7], 9600);
+=======
+  arduinoPort = new Serial(this, Serial.list()[7], 9600);
+
+  lastInterval = 0;
+  moneyCollected = 0.0;
+>>>>>>> c429ca2176bb6c7d892e514ed3e057e3e2c0e2af
 
 }
 
 void draw() {
+<<<<<<< HEAD
 	while (myPort.available() > 0) {
 		client.publish("/moneyCollected", str(myPort.read())); 
 	}
+=======
+  while (arduinoPort.available() > 0) {
+
+    String inBuffer = arduinoPort.readString();
+
+    if (inBuffer != null) {
+      inBuffer = inBuffer.replaceAll("\\D+","");
+      
+      if (millis() > lastInterval + SEND_INTERVAL) {
+        client.publish("/moneyCollected", inBuffer);
+        lastInterval = millis();
+      }
+    }
+  }
+>>>>>>> c429ca2176bb6c7d892e514ed3e057e3e2c0e2af
 }
 
 void messageReceived(String topic, byte[] payload) {
