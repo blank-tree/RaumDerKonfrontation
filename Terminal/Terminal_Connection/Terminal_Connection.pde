@@ -6,7 +6,7 @@ final static int SEND_INTERVAL = 800; // 0.8sec
 long lastInterval;
 MQTTClient client;
 Serial arduinoPort;
-float moneyCollected;
+int moneyCollected;
 
 void setup() {
   client = new MQTTClient(this);
@@ -18,39 +18,34 @@ void setup() {
   client.subscribe("/resettvm");
   
   printArray(Serial.list());
-<<<<<<< HEAD
-  myPort = new Serial(this, Serial.list()[7], 9600);
-=======
+
   arduinoPort = new Serial(this, Serial.list()[7], 9600);
 
   lastInterval = 0;
-  moneyCollected = 0.0;
->>>>>>> c429ca2176bb6c7d892e514ed3e057e3e2c0e2af
-
+  moneyCollected = 0;
 }
 
 void draw() {
-<<<<<<< HEAD
-	while (myPort.available() > 0) {
-		client.publish("/moneyCollected", str(myPort.read())); 
-	}
-=======
   while (arduinoPort.available() > 0) {
 
     String inBuffer = arduinoPort.readString();
 
     if (inBuffer != null) {
       inBuffer = inBuffer.replaceAll("\\D+","");
+      moneyCollected = int(inBuffer);
       
-      if (millis() > lastInterval + SEND_INTERVAL) {
-        client.publish("/moneyCollected", inBuffer);
-        lastInterval = millis();
-      }
     }
   }
->>>>>>> c429ca2176bb6c7d892e514ed3e057e3e2c0e2af
+
+  if (millis() > lastInterval + SEND_INTERVAL) {
+    client.publish("/moneyCollected", str(moneyCollected));
+    lastInterval = millis();
+  }
 }
 
 void messageReceived(String topic, byte[] payload) {
+  if (topic == "/resettvm") {
+    moneyCollected = 0;
+  }
   println(topic + ":" + new String(payload));
 }

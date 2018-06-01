@@ -93,7 +93,7 @@ $(function () {
     });
 
     $('.back-button').click(function () {
-        $payment.text(price.toFixed(2));
+        $payment.text((price / 100).toFixed(2));
         changeState(false, timeoutRegular);
     });
 
