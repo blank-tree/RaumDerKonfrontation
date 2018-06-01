@@ -99,7 +99,8 @@ void setup() {
 
 void loop() {
   while (Serial.available()) {
-    String receivedMessage = Serial.readString();
+    String receivedMessage = Serial.readStringUntil('\n');
+    receivedMessage.trim();
     messageReceived(getValue(receivedMessage, ':', 0), getValue(receivedMessage, ':', 1));
   }
 

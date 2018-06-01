@@ -27,13 +27,10 @@ void setup() {
 
 void draw() {
   while (arduinoPort.available() > 0) {
-
-    String inBuffer = arduinoPort.readString();
-
+    String inBuffer = arduinoPort.readStringUntil('\n');
     if (inBuffer != null) {
-      inBuffer = inBuffer.replaceAll("\\D+","");
-      moneyCollected = int(inBuffer);
-      
+      inBuffer = trim(inBuffer);
+      moneyCollected = parseInt(inBuffer);
     }
   }
 
@@ -44,8 +41,8 @@ void draw() {
 }
 
 void messageReceived(String topic, byte[] payload) {
-  if (topic == "/resettvm") {
+  if (topic.equals("/resettvm")) {
     moneyCollected = 0;
   }
-  println(topic + ":" + new String(payload));
+  arduinoPort.write(topic + ":" + new String(payload) + "\n");
 }
