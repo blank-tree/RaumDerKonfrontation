@@ -14,7 +14,7 @@ $(function () {
     var timeoutPaying = 120000; // 2min
     var timeoutCheckout = 30000; // 30sec
     var fadeTime = 400; // 0.5sec
-    var price = 10; // CHF 10.-
+    var price = 1000; // CHF 10.-
 
     var currentTimeout;
     var currentState = 0;
@@ -48,7 +48,7 @@ $(function () {
         if (currentState == 4 && topic == '/moneyCollected') {
             moneyCollected = parseFloat(message.toString());
             console.log('money collected: ' + moneyCollected);
-            $payment.text(moneyCollected <= price ? (price - moneyCollected).toFixed(2) : 0.00);
+            $payment.text(moneyCollected <= price ? ((price - moneyCollected) / 100).toFixed(2) : 0.00);
             resetTimeout(timeoutPaying);
             checkPayment();
         }
