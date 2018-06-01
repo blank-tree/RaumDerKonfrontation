@@ -128,7 +128,9 @@ $(function () {
     }
 
     function resetTimeout(timeoutTime) {
-        pauseScreen();
+        if (currentState != 4) {
+            pauseScreen();
+        }
         clearTimeout(currentTimeout);
         if (currentState != 0) {
             currentTimeout = setTimeout(resetTVM, timeoutTime);
