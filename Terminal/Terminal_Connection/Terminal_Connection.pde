@@ -14,13 +14,13 @@ void setup() {
   client.subscribe("/resettvm");
   
   printArray(Serial.list());
-  myPort = new Serial(this, Serial.list()[0], 9600);
+  myPort = new Serial(this, Serial.list()[7], 9600);
 
 }
 
 void draw() {
 	while (myPort.available() > 0) {
-		client.publish("/moneyCollected", str(myPort.read()));
+		client.publish("/moneyCollected", str(myPort.read())); 
 	}
 }
 
