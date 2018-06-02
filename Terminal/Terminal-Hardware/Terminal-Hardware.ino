@@ -5,8 +5,8 @@
    Board: Arduino UNO
    */
 
-   #include "Adafruit_Thermal.h"
-   #include "PlanP.h"
+#include "Adafruit_Thermal.h"
+#include "PlanP.h"
 //#include "PlanP_E.h"
 #include "RU.h"
 #include "RD.h"
@@ -123,21 +123,22 @@ void printReceipt() {
     //R up
     printer.justify('C');
     printer.printBitmap(RU_width, RU_height, RU_data);
-
+    
     printer.justify('C');
-    printer.println(F("\n \n"));
+    printer.println(("\n \n"));
 
     //Raum der Konfrontation
     printer.boldOn();
     printer.setSize('M');
     printer.justify('C');
-    printer.println(F("\nRoom of Confrontation"));
+    printer.println(("\n "));
+    printer.println(("\nRaum der Konfrontation"));
     printer.boldOff();
 
     //Ticket berechtigt zum Benuetzen des Raum waehrend diesem Zeitfenster:
     printer.setSize('S');
     printer.justify('C');
-    printer.println(F("\n \nTicket berechtigt zum\nBenuetzung des Raum waehrend \ndieses Zeitraums:"));
+    printer.println(("\n \nTicket berechtigt zum\nBenuetzung des Raum waehrend \ndieses Zeitraums:"));
 
     //Datum und Zeit
     printer.boldOn();
@@ -149,7 +150,7 @@ void printReceipt() {
     //Der Raum wird 10 Minuten vor Beginn geöffnet. 10 Minuten nach Schluss erscheint das Putzpersonal.
     printer.setSize('S');
     printer.justify('C');
-    printer.println(F("\nDer Raum wird 10 Minuten vor \nBeginn geoeffnet. \n10 Minuten nach Ende \nerscheint das Putzpersonal.\n \n"));
+    printer.println(("\nDer Raum wird 10 Minuten vor \nBeginn geoeffnet. \n10 Minuten nach Ende \nerscheint das Putzpersonal.\n \n"));
 
     //Plan Weg Raum
     printer.justify('C');
@@ -157,14 +158,14 @@ void printReceipt() {
 
     //Webseite
     printer.justify('C');
-    printer.println(F("\n \nwww.raumderkonfrontation.com\n\n"));
+    printer.println(("\n \nwww.raumderkonfrontation.com\n\n"));
 
     //R down
     printer.justify('C');
     printer.printBitmap(RD_width, RD_height, RD_data);
 
     printer.justify('C');
-    printer.println(F("\n\n\n\n\n\n"));
+    printer.println(("\n\n\n\n\n\n"));
   }
 
 
@@ -175,19 +176,20 @@ void printReceipt() {
     printer.printBitmap(RU_width, RU_height, RU_data);
 
     printer.justify('C');
-    printer.println(F("\n \n"));
+    printer.println(("\n \n"));
 
     //Raum der Konfrontation
     printer.boldOn();
     printer.setSize('S');
     printer.justify('C');
-    printer.println(F("\nRoom of Confrontation"));
+    printer.println(("\n "));
+    printer.println(("\nRoom of Confrontation"));
     printer.boldOff();
 
     //Ticket berechtigt zum Benuetzen des Raum waehrend diesem Zeitfenster:
     printer.setSize('S');
     printer.justify('C');
-    printer.println(F("\n \nTicket is valid to\nuse the room during \nthis period:"));
+    printer.println(("\n \nTicket is valid to\nuse the room during \nthis period:"));
 
     //Datum und Zeit
     printer.boldOn();
@@ -199,7 +201,7 @@ void printReceipt() {
     //Der Raum wird 10 Minuten vor Beginn geöffnet. 10 Minuten nach Schluss erscheint das Putzpersonal.
     printer.setSize('S');
     printer.justify('C');
-    printer.println(F("\nThe room will be opened \n10 minutes before beginning. \n10 minutes after the end \nthe cleaning staff will arive.\n \n"));
+    printer.println(("\nThe room will be opened \n10 minutes before beginning. \n10 minutes after the end \nthe cleaning staff will arive.\n \n"));
 
     //Plan Weg Raum
     printer.justify('C');
@@ -207,26 +209,24 @@ void printReceipt() {
 
     //Webseite
     printer.justify('C');
-    printer.println(F("\n \nwww.raumderkonfrontation.com\n\n"));
+    printer.println(("\n \nwww.raumderkonfrontation.com\n\n"));
 
     //R down
     printer.justify('C');
     printer.printBitmap(RD_width, RD_height, RD_data);
 
     printer.justify('C');
-    printer.println(F("\n\n\n\n\n\n"));
+    printer.println(("\n\n\n\n\n\n"));
 
     // ***********************************************************************************
   }
 
 
-  printer.feed(6);//default is 2
+  printer.feed(4);//default is 2
   printer.setDefault(); // Restore printer to defaults
   printer.sleep();      // Tell printer to sleep
   //delay(3000L);         // Sleep for 3 seconds
   // printer.wake();       // MUST wake() before printing again, even if reset
-  //pinMode(6, OUTPUT);   // lights out. Assuming it is jumper-ed correctly.
-  //while(1);
   
   resetTVM();
 }
@@ -236,6 +236,8 @@ void resetTVM() {
   appointmentDate = "";
   appointmentTime = "";
   currentlyPrinting = false;
+  // pinMode(8, OUTPUT);   // lights out. Assuming it is jumper-ed correctly.
+  // while(1);
 }
 
 // by H. Pauwelyn
