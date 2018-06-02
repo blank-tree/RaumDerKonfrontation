@@ -12,7 +12,7 @@ $(function () {
     var timeoutIdle = 600000; // 10min
     var timeoutRegular = 60000; // 1min
     var timeoutPaying = 120000; // 2min
-    var timeoutCheckout = 30000; // 30sec
+    var timeoutCheckout = 60000; // 1min
     var fadeTime = 400; // 0.5sec
     var price = 1000; // CHF 10.-
 

@@ -19,7 +19,7 @@ void setup() {
   
   printArray(Serial.list());
 
-  arduinoPort = new Serial(this, Serial.list()[7], 9600);
+  arduinoPort = new Serial(this, Serial.list()[3], 9600);
 
   lastInterval = 0;
   moneyCollected = 0;
@@ -31,6 +31,7 @@ void draw() {
     if (inBuffer != null) {
       inBuffer = trim(inBuffer);
       moneyCollected = parseInt(inBuffer);
+      // println(inBuffer);
     }
   }
 
