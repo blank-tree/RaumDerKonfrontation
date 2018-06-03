@@ -2,43 +2,44 @@
    Terminal-Hardware.ino
    Transfers the amount of money payed to the iPad
    and receives the command to print the receipt
-   Board: Arduino UNO
-   */
+   Board: Arduino MKR1000
+*/
 
+#include <SPI.h>
+#include <WiFi101.h>
+#include <MQTT.h>
 #include "Adafruit_Thermal.h"
+#include <wiring_private.h>
 #include "PlanP.h"
-//#include "PlanP_E.h"
+// #include "PlanP_E.h"
 #include "RU.h"
 #include "RD.h"
 
-// Here's the new syntax when using SoftwareSerial (e.g. Arduino Uno) ----
-// If using hardware serial instead, comment out or remove these lines:
+//Serial manuell definieren (da MKR1000 in "Adafruit_Thermal.h" nicht definiert weil neuer, nicht-arduino-mässiger Prozessor)
+#define PIN_SERIAL2_RX       (1ul)                // Pin description number for PIO_SERCOM on D1
+#define PIN_SERIAL2_TX       (0ul)                // Pin description number for PIO_SERCOM on D0
+#define PAD_SERIAL2_TX       (UART_TX_PAD_0)      // SERCOM pad 0 TX (blau)
+#define PAD_SERIAL2_RX       (SERCOM_RX_PAD_1)    // SERCOM pad 1 RX (grün)
+Uart Serial2(&sercom3, PIN_SERIAL2_RX, PIN_SERIAL2_TX, PAD_SERIAL2_RX, PAD_SERIAL2_TX);
 
-#include "SoftwareSerial.h"
-#define TX_PIN 6 // Arduino transmit  YELLOW WIRE  labeled RX on printer
-#define RX_PIN 5 // Arduino receive   GREEN WIRE   labeled TX on printer
-
-SoftwareSerial mySerial(RX_PIN, TX_PIN); // Declare SoftwareSerial obj first
-Adafruit_Thermal printer(&mySerial);     // Pass addr to printer constructor
-// Then see setup() function regarding serial & printer begin() calls.
-
-// Here's the syntax for hardware serial (e.g. Arduino Due) --------------
-// Un-comment the following line if using hardware serial:
-
-//Adafruit_Thermal printer(&Serial1);      // Or Serial2, Serial3, etc.
-
-// -----------------------------------------------------------------------
+Adafruit_Thermal printer(&Serial2);
 
 
 // Settings
 const int SEND_INTERVAL = 500; // 0.25s
 
 // Pins
-const int PIN_COINS = 0;
+const int PIN_COINS = 4;
 const int PIN_PRINTER = 7;
 
-// Functionality
+// Shitr.io Connection
+const char ssid[] = "BRIDGE";
+const char pass[] = "internet";
+WiFiClient net;
+MQTTClient client;
 unsigned long lastMillis = 0;
+
+// Functionality
 volatile int moneyCollected;
 boolean moneyChanged;
 String language;
@@ -46,54 +47,36 @@ String appointmentDate;
 String appointmentTime;
 boolean currentlyPrinting;
 
-void setup() {
-  Serial.begin(9600);
-
-  pinMode(8, INPUT);    // KILLSWITCH IF OUTPUT
-  digitalWrite(8, LOW);
-
-  moneyCollected = 0;
-  moneyChanged = false;
-  language = "";
-  appointmentDate = "";
-  appointmentTime = "";
-  currentlyPrinting = false;
-
-  pinMode(2, INPUT_PULLUP);
-  attachInterrupt(PIN_COINS, coinInserted, RISING);
-
-  mySerial.begin(9600);  // Initialize SoftwareSerial
-  //Serial1.begin(19200); // Use this instead if using hardware serial
-  printer.begin();        // Init printer (same regardless of serial type)
-  printer.sleep();
-
+//Funktion für den Serial2
+void SERCOM3_Handler() {   // Interrupt handler for SERCOM3
+  Serial2.IrqHandler();
 }
 
-void loop() {
-  while (Serial.available() && !currentlyPrinting) {
-    String receivedMessage = Serial.readStringUntil('\n');
-    receivedMessage.trim();
-    messageReceived(getValue(receivedMessage, ':', 0), getValue(receivedMessage, ':', 1));
+void connect() {
+  Serial.print("checking wifi...");
+  while (WiFi.status() != WL_CONNECTED) {
+    Serial.print(".");
+    delay(1000);
   }
 
-
-  if (moneyChanged && millis() - lastMillis > SEND_INTERVAL && !currentlyPrinting) {
-    lastMillis = millis();
-    moneyChanged = false;
-    Serial.println(String(moneyCollected));
+  Serial.print("\nconnecting...");
+  while (!client.connect("RdK-Arduino", "b23695cf", "36a044b175c04e97")) {
+    Serial.print(".");
+    delay(1000);
   }
+
+  Serial.println("\nconnected!");
+
+  client.subscribe("/language");
+  client.subscribe("/appointmentDate");
+  client.subscribe("/appointmentTime");
+  client.subscribe("/print");
+  client.subscribe("/resettvm");
+  // client.unsubscribe("/hello");
 }
 
-void coinInserted() {
-  if (!currentlyPrinting) {
-    moneyCollected = moneyCollected + 10;
-    moneyChanged = true;
-  }
-  
-}
-
-void messageReceived(String topic, String payload) {
-  // Serial.println("incoming: " + topic + " - " + payload);
+void messageReceived(String &topic, String &payload) {
+  Serial.println("incoming: " + topic + " - " + payload);
 
   if (topic == "/language") {
     language = payload;
@@ -104,12 +87,70 @@ void messageReceived(String topic, String payload) {
   } else if (topic == "/print") {
     printReceipt();
   } else if (topic == "/resettvm") {
-    // resetTVM();
+    // nothing
   }
 
 }
 
+void setup() {
+  Serial.begin(9600);
+  WiFi.begin(ssid, pass);
+
+  // Note: Local domain names (e.g. "Computer.local" on OSX) are not supported by Arduino.
+  // You need to set the IP address directly.
+  client.begin("broker.shiftr.io", net);
+  client.onMessage(messageReceived);
+
+  connect();
+
+  moneyCollected = 0;
+  moneyChanged = false;
+  language = "";
+  appointmentDate = "";
+  appointmentTime = "";
+  currentlyPrinting = false;
+
+  pinMode(6, INPUT);
+  digitalWrite(6, LOW);
+
+  pinMode(PIN_COINS, INPUT_PULLUP);
+  attachInterrupt(PIN_COINS, coinInserted, RISING);
+
+  pinMode(PIN_PRINTER, OUTPUT);
+  digitalWrite(PIN_PRINTER, LOW);
+  Serial2.begin(19200);
+  pinPeripheral(0, PIO_SERCOM);   // Assign pins 0 & 1 SERCOM functionality
+  pinPeripheral(1, PIO_SERCOM);
+  printer.begin();  // Init printer (same regardless of serial type)
+  printer.sleep();
+
+}
+
+void loop() {
+  client.loop();
+
+  if (!client.connected()) {
+    connect();
+  }
+
+  if (moneyChanged && millis() - lastMillis > SEND_INTERVAL && !currentlyPrinting) {
+    lastMillis = millis();
+    moneyChanged = false;
+    Serial.println(String(moneyCollected));
+    client.publish("/moneyCollected", String(moneyCollected));
+  }
+}
+
+void coinInserted() {
+  moneyCollected = moneyCollected + 10;
+  moneyChanged = true;  
+}
+
 void printReceipt() {
+
+  client.disconnect();
+
+
   currentlyPrinting = true;
   int appointmentEnding = appointmentTime != "" ? appointmentTime.toInt() + 1 : 0;
   String appointmentEndingString = appointmentEnding <= 9 ? "0" + String(appointmentEnding) : String(appointmentEnding);
@@ -228,31 +269,12 @@ void printReceipt() {
   //delay(3000L);         // Sleep for 3 seconds
   // printer.wake();       // MUST wake() before printing again, even if reset
   
-  resetTVM();
-}
-
-void resetTVM() {
   moneyCollected = 0;
   appointmentDate = "";
   appointmentTime = "";
   currentlyPrinting = false;
-  // pinMode(8, OUTPUT);   // lights out. Assuming it is jumper-ed correctly.
-  // while(1);
-}
+  
+   pinMode(6, OUTPUT);   // lights out. Assuming it is jumper-ed correctly.
+   while(1);
 
-// by H. Pauwelyn
-// https://arduino.stackexchange.com/a/1237
-String getValue(String data, char separator, int index) {
-  int found = 0;
-  int strIndex[] = { 0, -1 };
-  int maxIndex = data.length() - 1;
-
-  for (int i = 0; i <= maxIndex && found <= index; i++) {
-    if (data.charAt(i) == separator || i == maxIndex) {
-      found++;
-      strIndex[0] = strIndex[1] + 1;
-      strIndex[1] = (i == maxIndex) ? i + 1 : i;
-    }
-  }
-  return found > index ? data.substring(strIndex[0], strIndex[1]) : "";
 }
