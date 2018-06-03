@@ -10,10 +10,8 @@ if ($conn->connect_error) {
 
 $date = $_GET['date'];
 $time = $_GET['time'];
-if ($time < 22 && $time > 7) {
-	$nextHour = $time - 1;
-}
 $nextHour = $time < MAX_TIME ? $time + 1 : 0;
+$hourBefore = $time - 1 >= MIN_TIME ? $time - 1 : 0;
 $success = false;
 
 
@@ -23,6 +21,11 @@ if ($conn->query($sql) == true) {
 	if ($nextHour != 0) {
 		$sql = "UPDATE " . DB_TABLE . " SET taken = TRUE, timestamp = " . time() . " WHERE date=" . $date .
 			" AND time=" . $nextHour;
+		$conn->query($sql);
+	}
+	if ($hourBefore != 0) {
+		$sql = "UPDATE " . DB_TABLE . " SET taken = TRUE, timestamp = " . time() . " WHERE date=" . $date .
+			" AND time=" . $hourBefore;
 		$conn->query($sql);
 	}
 } else {
