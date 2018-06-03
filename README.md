@@ -7,9 +7,11 @@
 Description for the project: [www.raumderkonfrontation.com](http://raumderkonfrontation.com/).
 
 #### Software
-- Ableton Live 10
-- Max by Cycling '74 for controlling ableton and the lights
-- shiftr.io for the Terminal
+- Ableton Live 10 (Room)
+- Max by Cycling '74 for controlling ableton and the lights (Room)
+- shiftr.io (Terminal)
+- PHP Hosting Service with mySQL (Terminal)
+- VNC (Room)
 
 #### Hardware
 - 2x Arduino MKR1000 (Terminal & Room: Light)
@@ -21,6 +23,5 @@ Description for the project: [www.raumderkonfrontation.com](http://raumderkonfro
 - Thermal Printer (Terminal)
 - Coin Collector (Terminal)
 - iPad (Terminal)
-- PHP Hosting Service with mySQL (Terminal)
 
-###### Version: 0.16.21 - 180514
+###### Version: 0.29.05 - 180603
