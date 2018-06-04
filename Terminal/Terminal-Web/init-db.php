@@ -18,7 +18,11 @@ $stmt->bind_param("ssi", $date, $time, $taken);
 
 for ($date = MIN_DATE; $date <= MAX_DATE; $date++) {
 	for ($time = MIN_TIME; $time <= MAX_TIME; $time++) {
-		$taken = $time == EXHIBITION_TIME;
+		$taken = $time == EXHIBITION_TIME 
+			|| $date == DATE_VERNISSAGE
+			|| $date == DATE_FINALSTEST
+			|| $date == DATE_FINALS
+			|| $date == DATE_FEST;
 		$stmt->execute();
 	}
 }

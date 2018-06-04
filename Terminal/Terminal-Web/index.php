@@ -91,7 +91,11 @@ $conn->close();
 					<h2 class="content-de">Juni</h2>
 					<h2 class="content-en">June</h2>
 					<?php for ($date = MIN_DATE; $date <= MAX_DATE; $date++):
-						$timeframe = date('d') + 1 > $date;
+						$timeframe = date('d') + 1 > $date 
+							|| $date == DATE_VERNISSAGE 
+							|| $date == DATE_FINALSTEST 
+							|| $date == DATE_FINALS
+							|| $date == DATE_FEST;
 						?>
 						<a class="button date-button <?= $timeframe ? 'disabled' : '' ?>"
 							data-date="<?= $date ?>"><?= $date <= 9 ? '0' . $date : $date ?></a>

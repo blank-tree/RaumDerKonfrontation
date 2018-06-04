@@ -64,17 +64,19 @@ $(function () {
 
     // Choose Date
     $('#screen-2 .date-button').click(function () {
-        $('#screen-2 .date-button').removeClass('primary').addClass('hollow');
-        $(this).removeClass('hollow').addClass('primary');
-        $('#screen-3 .time-button').removeClass('primary').addClass('hollow');
-        $('#screen-3 .forward-button').addClass('disabled');
-        appointmentDate = $(this).data('date');
-        var appointmentDateMessage = appointmentDate <=9 ? "0" + appointmentDate.toString() : appointmentDate.toString();
-        client.publish('/appointmentDate', appointmentDateMessage);
-        $date.text(appointmentDateMessage);
-        $('#screen-2 .forward-button').removeClass('disabled');
-        $('#screen-3 .timetables').hide();
-        $('#screen-3 #date-' + appointmentDate).show();
+        if (!$(this).hasClass('disabled')) {
+            $('#screen-2 .date-button').removeClass('primary').addClass('hollow');
+            $(this).removeClass('hollow').addClass('primary');
+            $('#screen-3 .time-button').removeClass('primary').addClass('hollow');
+            $('#screen-3 .forward-button').addClass('disabled');
+            appointmentDate = $(this).data('date');
+            var appointmentDateMessage = appointmentDate <=9 ? "0" + appointmentDate.toString() : appointmentDate.toString();
+            client.publish('/appointmentDate', appointmentDateMessage);
+            $date.text(appointmentDateMessage);
+            $('#screen-2 .forward-button').removeClass('disabled');
+            $('#screen-3 .timetables').hide();
+            $('#screen-3 #date-' + appointmentDate).show();
+        }
     });
 
     // Choose Time
