@@ -120,10 +120,10 @@ $conn->close();
 			<div class="grid date">
 				<div class="container">
 					<div class="content-de">
-						<h1>Wähle eine Startuhrzeit für deine Stunde:</h1>
+						<h1>Wähle die Uhrzeit für deine Stunde:</h1>
 					</div>
 					<div class="content-en">
-						<h1>Choose a start time for your hour:</h1>
+						<h1>Choose the time for your hour:</h1>
 					</div>
 
 					<?php for ($date = MIN_DATE; $date <= MAX_DATE; $date++): ?>
