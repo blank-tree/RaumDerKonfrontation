@@ -46,13 +46,13 @@ $conn->close();
 			<div class="content-de container">
 				<h1>Raum der Konfrontation</h1>
 				<p>
-					Wir reflektieren; wir konfrontieren; wir fragen; jeden Tag. Wo und warum? Zu welchem Zweck? Mit welchen
-					Positionen? Und mit wem, abgesehen von uns selbst?
-					<br><br>
 					Der Prozess der Reflexion ermöglicht uns selbst, unser Handeln und unsere Umgebung besser zu verstehen
 					und mitzufühlen. Die Möglichkeit und Zeit diese aktiv zu praktizieren fehlt jedoch oft im Alltag.
 					<br><br>
-					Nun wurde ein Raum geschaffen um dies zu ändern.
+					Nun wurde ein Raum geschaffen um dies zu ändern.<br>
+					<b>Eine Stunde alleine und anonym für dich zur Reflexion.</b>
+					<br><br>
+					Vom 7. bis und mit 21. Juni 2018 besteht die Möglichkeit den «Raum der Konfrontation» zum Betrag von CHF 10.&mdash; zu nutzen.
 				</p>
 				<div>
 					<a class="button back-button">Zurück</a>
@@ -62,14 +62,14 @@ $conn->close();
 			<div class="content-en container">
 				<h1>Room of Confrontation</h1>
 				<p>
-					We reflect; we confront; we ask; every day. Where and why? To what purpose? From which perspective? And
-					with whom besides ourselves?
-					<br><br>
 					The process of reflection enables us to better feel and understand ourselves, our actions and our
 					environment. Yet the possibility and time to actively practice this is too often missing in our everyday
 					lives.
 					<br><br>
-					Room has been created to change that.
+					Room has been created to change that.<br>
+					<b>One hour alone and anonymous for your to reflect yourself.</b>
+					<br><br>
+					7. up to the 21. of June there is the possibility to book the «Room of Confrontation» for CHF 10.&mdash;.
 				</p>
 				<div>
 					<a class="button back-button">Back</a>
@@ -82,18 +82,18 @@ $conn->close();
 		<div class="grid date">
 			<div class="container">
 				<div class="content-de">
-					<h1>Wähle Tag:</h1>
+					<h1>Wähle ein Datum:</h1>
 				</div>
 				<div class="content-en">
-					<h1>Choose a day:</h1>
+					<h1>Choose a date:</h1>
 				</div>
 				<div class="calendar">
 					<h2 class="content-de">Juni</h2>
 					<h2 class="content-en">June</h2>
 					<?php for ($date = MIN_DATE; $date <= MAX_DATE; $date++):
-						$timeframe = date('d') + 1 > $date 
-							|| $date == DATE_VERNISSAGE 
-							|| $date == DATE_FINALSTEST 
+						$timeframe = date('d') + 1 > $date
+							|| $date == DATE_VERNISSAGE
+							|| $date == DATE_FINALSTEST
 							|| $date == DATE_FINALS
 							|| $date == DATE_FEST;
 						?>
@@ -120,10 +120,10 @@ $conn->close();
 			<div class="grid date">
 				<div class="container">
 					<div class="content-de">
-						<h1>Uhr:</h1>
+						<h1>Wähle eine Startuhrzeit für deine Stunde:</h1>
 					</div>
 					<div class="content-en">
-						<h1>Choose the start time for your hour:</h1>
+						<h1>Choose a start time for your hour:</h1>
 					</div>
 
 					<?php for ($date = MIN_DATE; $date <= MAX_DATE; $date++): ?>
@@ -163,10 +163,10 @@ $conn->close();
 							<div class="payment-info">
 								<div class="accepted-coins">
 									<p>Akzeptierte Münzen:</p>
-									<p>5.&mdash; / 2.&mdash; / 1.&mdash; / &mdash;.50 / &mdash;.20 / &mdash;.10</p>
+									<p>5.&mdash; / 2.&mdash; / 1.&mdash;</p>
 								</div>
 								<div class="to-pay">
-									<p>Noch zu zahlen: <span class="payment"></span></p>
+									<p>Noch zu zahlen: CHF <span class="payment"></span></p>
 									<p>Kein Rückgeld!</p>
 								</div>
 							</div>
@@ -179,14 +179,14 @@ $conn->close();
 							<h2>Your appointment:</h2>
 							<p>Date: <span class="checkout-date"></span>. June 2018</p>
 							<p>Time: <span class="checkout-time"></span>:00 - <span class="checkout-endtime"></span>:00</p>
-							<p>Place: (Will be apparent on the receipt)</p>
+							<p>Place: (will be apparent on the receipt)</p>
 							<div class="payment-info">
 								<div class="accepted-coins">
 									<p>Accepted coins:</p>
-									<p>5.&mdash; / 2.&mdash; / 1.&mdash; / &mdash;.50 / &mdash;.20 / &mdash;.10</p>
+									<p>5.&mdash; / 2.&mdash; / 1.&mdash;</p>
 								</div>
 								<div class="to-pay">
-									<p>Remaining: <span class="payment"></span></p>
+									<p>Remaining: CHF <span class="payment"></span></p>
 									<p>No change!</p>
 								</div>
 							</div>
@@ -209,7 +209,7 @@ $conn->close();
 							<h2>Dein Termin:</h2>
 							<p>Datum: <span class="checkout-date"></span>. Juni 2018</p>
 							<p>Zeit: <span class="checkout-time"></span>:00 - <span class="checkout-endtime"></span>:00</p>
-							<p>Ort: 5.T04 (ZHdK/Turm)</p> <br>
+							<p>Ort: (ist auf der Quittung ersichtlich)</p> <br>
 							<h2>Besten Dank für deine Buchung.</h2>
 						</div>
 						<div class="content-en">
@@ -217,7 +217,7 @@ $conn->close();
 							<h2>Your appointment:</h2>
 							<p>Date: <span class="checkout-date"></span>. June 2018</p>
 							<p>Time: <span class="checkout-time"></span>:00 - <span class="checkout-endtime"></span>:00</p>
-							<p>Place: 5.T04 (ZHdK/Tower)</p> <br>
+							<p>Place: (apparent on the receipt)</p> <br>
 							<h2>Thank you for your booking</h2>
 						</div>
 					</div>
