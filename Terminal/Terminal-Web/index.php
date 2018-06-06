@@ -49,7 +49,7 @@ $conn->close();
 					Der Prozess der Reflexion ermöglicht uns selbst, unser Handeln und unsere Umgebung besser zu verstehen
 					und mitzufühlen. Die Möglichkeit und Zeit diese aktiv zu praktizieren fehlt jedoch oft im Alltag.
 					<br><br>
-					Nun wurde ein Raum geschaffen um dies zu ändern.<br><br>
+					Nun wurde ein Raum geschaffen um dies zu ändern.<br>
 					Eine Stunde alleine und anonym für dich zur Reflexion.
 					<br><br>
 					Vom 7. bis und mit 21. Juni 2018 besteht die Möglichkeit den «Raum der Konfrontation» zum Betrag von CHF 10.&mdash; zu nutzen.
@@ -66,7 +66,7 @@ $conn->close();
 					environment. Yet the possibility and time to actively practice this is too often missing in our everyday
 					lives.
 					<br><br>
-					Room has been created to change that.<br><br>
+					Room has been created to change that.<br>
 					One hour alone and anonymous for your to reflect yourself.
 					<br><br>
 					7. up to the 21. of June there is the possibility to book the «Room of Confrontation» for the amount of CHF 10.&mdash;.
