@@ -69,7 +69,7 @@ $conn->close();
 					Room has been created to change that.<br><br>
 					One hour alone and anonymous for your to reflect yourself.
 					<br><br>
-					7. up to the 21. of June there is the possibility to book the «Room of Confrontation» for CHF 10.&mdash;.
+					7. up to the 21. of June there is the possibility to book the «Room of Confrontation» for the amount of CHF 10.&mdash;.
 				</p>
 				<div>
 					<a class="button back-button">Back</a>
