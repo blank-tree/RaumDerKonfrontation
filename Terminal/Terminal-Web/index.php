@@ -67,7 +67,7 @@ $conn->close();
 					lives.
 					<br><br>
 					Room has been created to change that.<br>
-					One hour alone and anonymous for your to reflect yourself.
+					One hour alone and anonymous for you to reflect yourself.
 					<br><br>
 					7. up to the 21. of June there is the possibility to book the «Room of Confrontation» for the amount of CHF 10.&mdash;.
 				</p>
