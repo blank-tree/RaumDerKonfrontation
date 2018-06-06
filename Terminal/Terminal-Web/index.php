@@ -49,8 +49,8 @@ $conn->close();
 					Der Prozess der Reflexion ermöglicht uns selbst, unser Handeln und unsere Umgebung besser zu verstehen
 					und mitzufühlen. Die Möglichkeit und Zeit diese aktiv zu praktizieren fehlt jedoch oft im Alltag.
 					<br><br>
-					Nun wurde ein Raum geschaffen um dies zu ändern.<br>
-					<b>Eine Stunde alleine und anonym für dich zur Reflexion.</b>
+					Nun wurde ein Raum geschaffen um dies zu ändern.<br><br>
+					Eine Stunde alleine und anonym für dich zur Reflexion.
 					<br><br>
 					Vom 7. bis und mit 21. Juni 2018 besteht die Möglichkeit den «Raum der Konfrontation» zum Betrag von CHF 10.&mdash; zu nutzen.
 				</p>
@@ -66,8 +66,8 @@ $conn->close();
 					environment. Yet the possibility and time to actively practice this is too often missing in our everyday
 					lives.
 					<br><br>
-					Room has been created to change that.<br>
-					<b>One hour alone and anonymous for your to reflect yourself.</b>
+					Room has been created to change that.<br><br>
+					One hour alone and anonymous for your to reflect yourself.
 					<br><br>
 					7. up to the 21. of June there is the possibility to book the «Room of Confrontation» for CHF 10.&mdash;.
 				</p>
@@ -155,7 +155,7 @@ $conn->close();
 				<div class="grid">
 					<div class="container">
 						<div class="content-de">
-							<h1>Bezahle den Betrag um die Buchung abzuschliessen</h1>
+							<h1>Bezahle um die Buchung abzuschliessen</h1>
 							<h2>Dein Termin:</h2>
 							<p>Datum: <span class="checkout-date"></span>. Juni 2018</p>
 							<p>Zeit: <span class="checkout-time"></span>:00 - <span class="checkout-endtime"></span>:00</p>
@@ -175,7 +175,7 @@ $conn->close();
 							</div>
 						</div>
 						<div class="content-en">
-							<h1>Insert coins to complete the booking</h1>
+							<h1>Pay to complete the booking</h1>
 							<h2>Your appointment:</h2>
 							<p>Date: <span class="checkout-date"></span>. June 2018</p>
 							<p>Time: <span class="checkout-time"></span>:00 - <span class="checkout-endtime"></span>:00</p>
