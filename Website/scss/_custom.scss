@@ -1,0 +1,42 @@
+#raum {
+  margin-top: rem-calc(50);
+  margin-bottom: rem-calc(50);
+}
+
+#platzhalterpage {
+  margin-top: rem-calc(50);
+  h1 {
+    // font-size: rem-calc(72);
+    letter-spacing: rem-calc(4);
+    font-weight: bold;
+  }
+  p {
+    margin-top: rem-calc(25);
+  }
+  a {
+    font-style: italic;
+  }
+  #logbuchbutton {
+    font-size: rem-calc(18);
+  }
+  footer {
+    margin-top: rem-calc(20);
+    p {
+      font-style: italic;
+    }
+  }
+}
+
+#logo-top, #logo-bottom {
+  margin-top: rem-calc(60);
+}
+
+#logo-bottom {
+  -moz-transform: scaleY(-1);
+  -o-transform: scaleY(-1);
+  -webkit-transform: scaleY(-1);
+  transform: scaleY(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+  margin-bottom: rem-calc(60);
+}

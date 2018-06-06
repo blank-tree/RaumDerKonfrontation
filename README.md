@@ -24,4 +24,4 @@ Description for the project: [www.raumderkonfrontation.com](http://raumderkonfro
 - Coin Collector (Terminal)
 - iPad (Terminal)
 
-###### Version: 0.30.02 - 180604
+###### Version: 0.32.06 - 180606
