@@ -155,7 +155,7 @@ $conn->close();
 				<div class="grid">
 					<div class="container">
 						<div class="content-de">
-							<h1>Bezahle um die Buchung abzuschliessen</h1>
+							<h1>Bezahle um Buchung abzuschliessen</h1>
 							<h2>Dein Termin:</h2>
 							<p>Datum: <span class="checkout-date"></span>. Juni 2018</p>
 							<p>Zeit: <span class="checkout-time"></span>:00 - <span class="checkout-endtime"></span>:00</p>
