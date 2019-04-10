@@ -1,4 +1,4 @@
-![2018-05-13 17 00 00](https://raumderkonfrontation.com/img/180505-RdK.jpg)
+![2018-05-13 17 00 00](https://blanktree.ch/wp-content/uploads/2018/02/rdk-main.jpg)
 
 # RAUM DER KONFRONTATION
 ## BA [Interaction Design](http://iad.zhdk.ch/), [Zurich University of the Arts](http://zhdk.ch/)
