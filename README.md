@@ -4,7 +4,7 @@
 ## BA [Interaction Design](http://iad.zhdk.ch/), [Zurich University of the Arts](http://zhdk.ch/)
 ## [Fernando Obieta](http://fernando-obieta.com/) & Claudio Rainolter
 
-Description for the project: [www.raumderkonfrontation.com](http://raumderkonfrontation.com/).
+[Description for the project](https://blanktree.ch/raum-der-konfrontation/).
 
 #### Software
 - Ableton Live 10 (Room)
