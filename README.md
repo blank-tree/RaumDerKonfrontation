@@ -1,8 +1,9 @@
 # RAUM DER KONFRONTATION
-![Raum der Konfrontation](https://be.fernando-obieta.com/wp-content/uploads/2019/07/rdk-main.jpg)
+![Raum der Konfrontation](https://be.fernando-obieta.com/wp-content/uploads/2019/07/RdK.gif)
 
 ## BA [Interaction Design](http://iad.zhdk.ch/), [Zurich University of the Arts](http://zhdk.ch/)
 ## [Fernando Obieta](http://fernando-obieta.com/) & Claudio Rainolter
+![Raum der Konfrontation](https://be.fernando-obieta.com/wp-content/uploads/2019/07/rdk-main.jpg)
 ![Raum der Konfrontation - Panel](https://be.fernando-obieta.com/wp-content/uploads/2019/07/rdk-panel.jpg)
 ![Raum der Konfrontation - Light](https://be.fernando-obieta.com/wp-content/uploads/2019/07/rdk-licht.jpg)
 ![Raum der Konfrontation - Terminal](https://be.fernando-obieta.com/wp-content/uploads/2019/07/rdk-terminal.jpg)
